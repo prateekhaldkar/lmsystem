@@ -163,19 +163,19 @@ public class User {
     try{
       con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
 
-      String query = "insert into users (name, email, password, gender, city_id, address, contact, verification_code, user_type_id) value (?,?,?,?,?,?,?,?,?,?,?)";
+      String query = "insert into users (name, email, password, gender, city_id, address, contact, verification_code, user_type_id) value (?,?,?,?,?,?,?,?,?,?)";
       
       PreparedStatement ps = con.prepareStatement(query);
 
       ps.setString(1,name);
       ps.setString(2,email);
       ps.setString(3,spe.encryptPassword(password));
-      ps.setString(12,userType.getUserTypeId() == 2 ? "O" : "-");
-      ps.setInt(6, city.getCityId());
-      ps.setString(7, address != null ? address : "-");  
-      ps.setString(8,contact);
-      ps.setString(9,verificationCode);
-      ps.setInt(11,userType.getUserTypeId());
+      ps.setString(4,userType.getUserTypeId() == 2 ? "O" : "-");
+      ps.setInt(5, city.getCityId());
+      ps.setString(6, address != null ? address : "-");  
+      ps.setString(7,contact);
+      ps.setString(8,verificationCode);
+      ps.setInt(9,userType.getUserTypeId());
       
       int val = ps.executeUpdate();
 

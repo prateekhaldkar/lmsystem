@@ -13,6 +13,10 @@ public class City {
   ///////////contructors//////////
   public City() {}
 
+  public City(String city) {
+    this.city = city;
+  }
+
   public City(Integer cityId) {
     this.cityId = cityId;
   }
@@ -58,7 +62,7 @@ public class City {
 
       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
 
-      String query = "select city_id,c.name,s.name from cities as c inner join states as s where c.state_id=s.state_id";
+      String query = "select city_id,c.city,s.state from cities as c inner join states as s where c.state_id=s.state_id";
       
       PreparedStatement ps = con.prepareStatement(query);
 

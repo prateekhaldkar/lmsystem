@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ import utils.AppUtil;
 import utils.EmailSender;
 import utils.EmailTemplates;
 import utils.MessageTemplate;
+import utils.SplitCities;
 
 @WebServlet("/signup.do")
 public class SignupServlet extends HttpServlet {
@@ -31,11 +33,12 @@ public class SignupServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String contact = request.getParameter("contact");
-        Integer cityId = Integer.parseInt(request.getParameter("city_id"));
+        // Integer cityId = Integer.parseInt(request.getParameter("city_id"));
+        
         Integer userTypeId = Integer.parseInt(request.getParameter("user_type_id"));
 
         String verificationCode = AppUtil.generateEmailVerificationCode();
-        User user = new User(name, email, password, new City(cityId), contact,  verificationCode, new UserType(userTypeId));
+        User user = new User(name, email, password, SplitCities.splitCity (request.getParameter("city_id"), (ArrayList<City>)context.getAttribute("cities")), contact,  verificationCode, new UserType(userTypeId));
 
         if( userTypeId == 2 ){
             user.setAddress(request.getParameter("address"));

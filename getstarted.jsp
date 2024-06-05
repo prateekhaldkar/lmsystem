@@ -57,7 +57,7 @@
             <!-- candidate -->
             <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
                 <div class="m-8 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 login_card">
-                    <a href="signin.do">
+                    <a href="login.do?user_type_id=1">
                         <div class="m-8 flex flex-col items-center pb-10">
                             <img class="m-8 w-32 h-32 mb-3  shadow-lg" src="static/media/images/candidate.png" alt="Bonnie image" />
                             <h5 class="sono-gfont m-8 mb-1 text-xl font-medium text-gray-900 dark:text-white">candidate</h5>
@@ -67,10 +67,25 @@
                 </div>
             </div>
 
+            <!-- library -->
+            <div class=" w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+                <div class="max-w-sm m-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 login_card">
+                    <a href="login.do?user_type_id=2">
+                        <div class="flex m-8 flex-col items-center pb-10">
+                            <img class="m-8 w-32 h-32 mb-3 rounded-lg shadow-lg" src="static/media/images/library.png"
+                            alt="Bonnie image" />
+                            <h5 class="sono-gfont m-8 mb-1 text-xl font-medium text-gray-900 dark:text-white">library
+                            </h5>
+                            <span class="m-8 text-sm text-gray-500 dark:text-gray-400">-------</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
             <!-- librarian -->
             <div class=" w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
                 <div  class="m-8 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 login_card">
-                    <a href="login.jsp">
+                    <a href="login.do?user_type_id=3">
                         <div class="m-8 flex flex-col items-center pb-10">
                             <img class="m-8 w-32 h-32 mb-3 rounded-lg shadow-lg" src="static/media/images/librarian.png"
                                 alt="Bonnie image" />
@@ -80,25 +95,11 @@
                     </a>
                 </div>
             </div>
-            <!-- library -->
-            <div class=" w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-                <div class="max-w-sm m-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 login_card">
-                    <a href="login.jsp">
-                        <div class="flex m-8 flex-col items-center pb-10">
-                            <img class="m-8 w-32 h-32 mb-3 rounded-lg shadow-lg" src="static/media/images/library.png"
-                                alt="Bonnie image" />
-                            <h5 class="sono-gfont m-8 mb-1 text-xl font-medium text-gray-900 dark:text-white">library
-                            </h5>
-                            <span class="m-8 text-sm text-gray-500 dark:text-gray-400">-------</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
 
             <!-- publisher -->
             <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
                 <div class="m-8 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 login_card">
-                    <a href="login.jsp">
+                    <a href="login.do?user_type_id=4">
                         <div class="flex flex-col items-center m-8 pb-10">
                             <img class="m-8 w-32 h-32 mb-3 rounded-lg  shadow-lg" src="static/media/images/publisher.png"
                                 alt="Bonnie image" />

@@ -38,7 +38,7 @@
   </context-param>
 
   <listener>
-    <listener-class>listeners.ApplistenerImpl</listener-class>
+    <listener-class>listeners.AppListenerImpl</listener-class>
   </listener>
-
+  
 </web-app>

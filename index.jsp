@@ -67,7 +67,7 @@
             </div>
 
             <div class="text-white text-center w-full mb-4 flex-grow">
-              <a href="getstarted.jsp">
+              <a href="getstarted.do">
                 <button type="button" class="text-white bg-orng hover:bg-orng1 focus:ring-2 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 text-center  dark:focus:ring-orng">Get started</button>
               </a>
             </div>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,18 +54,18 @@
                         <hr class=" sm:w-52 md:w-1/2 border-t-4 my-2 mx-auto border-orng">
                         <p class="xl:text-2xl font-semibold">
                             <c:choose>
-                                <c:when test="${param.user_type_is==1}">
-                                    candidate
+                                <c:when test="${param.user_type_id==1}">
+                                    CANDIDATE
                                 </c:when>
                                 <c:when test="${param.user_type_id==2}">
-                                    librarian
+                                    LIBRARY
                                 </c:when>
                                 <c:when test="${param.user_type_id==3}">
-                                    library
+                                    LIBRARIAN
                                 </c:when>
-                                <c:when test="${param.user_type_id==4}">
-                                    publisher
-                                </c:when>
+                                <c:otherwise>
+                                    PUBLISHER
+                                </c:otherwise>
                             </c:choose>
                         </p>
                     </div>
@@ -73,7 +74,7 @@
         </div>
 
         <div class="row">
-            <form action="signin.do" method="post" class="max-w-lg mx-auto">
+            <form action="login.do" method="post" class="max-w-lg mx-auto">
                 <input type="hidden" name="user_type_id" id="user_type_id" value="${param.user_type_id}">
                 <div class="relative z-0 w-full mb-6 group">
                     <input type="email" name="email" id="email" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
@@ -91,7 +92,7 @@
                 </div>
 
                 <div class=" flex flex-col sm:flex-row gap-4">
-                    <!-- signin btn -->
+                    <!-- login btn -->
                     <button id="btn" type="submit" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-24 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">login</button>
                     <!-- signup btn -->
                     <a href="signup.do?user_type_id=${param.user_type_id}" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-24 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">signup</a>

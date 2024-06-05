@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="relative z-0 w-full mb-6 group">
+        <input placeholder="Select City" list="city" name="city_id" id="city_id" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+        <datalist id="city">
+            <!-- Options will be dynamically populated here -->
+        </datalist>
+    </div>
+
+    
+
+    <script>
+        // Function to fetch cities from backend
+        async function fetchCities() {
+            try {
+                const response = await fetch('/api/cities');  // Replace with your API endpoint
+                const cities = await response.json();
+                populateDatalist(cities);
+            } catch (error) {
+                console.error('Error fetching cities:', error);
+            }
+        }
+        
+        // Function to populate datalist with cities
+        function populateDatalist(cities) {
+            const datalist = document.getElementById('city');
+            datalist.innerHTML = '';  // Clear existing options
+        
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = `${city.city}(${city.state.state})`;
+                datalist.appendChild(option);
+            });
+        }
+        
+        // Fetch cities when the page loads
+        document.addEventListener('DOMContentLoaded', fetchCities);
+        </script>
+</body>
+</html>
