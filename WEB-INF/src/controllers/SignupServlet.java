@@ -34,7 +34,6 @@ public class SignupServlet extends HttpServlet {
         String password = request.getParameter("password");
         String contact = request.getParameter("contact");
         // Integer cityId = Integer.parseInt(request.getParameter("city_id"));
-        
         Integer userTypeId = Integer.parseInt(request.getParameter("user_type_id"));
 
         String verificationCode = AppUtil.generateEmailVerificationCode();
@@ -48,14 +47,14 @@ public class SignupServlet extends HttpServlet {
             String emailContent = EmailTemplates.generateWelcomeMail(name, email, verificationCode, userTypeId);
             EmailSender.sendEmail(email, subject, emailContent);
 
-            String userPath = context.getRealPath("/WEB-INF/uploads/" + UserType.types[userTypeId-2].toLowerCase());
+            String userPath = context.getRealPath("/WEB-INF/uploads/" + UserType.types[userTypeId-1].toLowerCase());
             File file = new File(userPath, email + "/logo");
             file.mkdirs();
 
         }
 
         String signupSuccessMessage = MessageTemplate.getSignupSuccessMessage();
-        response.sendRedirect("message.jsp?color=alert-success&message="+signupSuccessMessage);
+        response.sendRedirect("message.jsp?img=static/media/images/check_email.png&color=text-green-200&message="+signupSuccessMessage);
 
     }
 

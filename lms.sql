@@ -687,7 +687,7 @@ create table users(
     address varchar(500) null,
     contact char(10) not null unique,
     profile_pic char(255) null,
-    verification_code char(6) null,
+    verification_code char(225) null,
     status_id int not null default 1, 
     document_type_id int, 
     document_path varchar(255) null,
@@ -800,3 +800,5 @@ SELECT * FROM cities;
 ==============================================================================================================
 select city_id,city,c.state_id,state from cities as c inner join states as s where c.state_id=s.state_id;
 ==============================================================================================================
+
+UPDATE users SET status_id='8' WHERE email='prateekhaldkar3865@gmail.com';

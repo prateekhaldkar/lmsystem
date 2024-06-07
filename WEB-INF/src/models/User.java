@@ -86,8 +86,9 @@ public class User {
       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
 
       String query = "select password,user_id,u.name,c.city_id,c.city,s.state_id,s.state,contact," + 
-      "dob,gender,address,profilePic,status_id from users as u inner join cities as c inner join " + 
+      "dob,gender,address,profile_pic,status_id from users as u inner join cities as c inner join " + 
       "states as s where c.state_id=s.state_id and u.city_id=c.city_id and email=?";
+      // select password,user_id,u.name,c.city_id,c.city,s.state_id,s.state,contact,dob,gender,address,profilePic,status_id from users as u inner join cities as c inner join states as s where c.state_id=s.state_id and u.city_id=c.city_id and email=prateekhaldkar3865@gmai.com
 
       PreparedStatement ps = con.prepareStatement(query);
       ps.setString(1, email);//jisme query fire karna vo email yaha se set hogi
@@ -163,20 +164,20 @@ public class User {
     try{
       con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
 
-      String query = "insert into users (name, email, password, gender, city_id, address, contact, verification_code, user_type_id) value (?,?,?,?,?,?,?,?,?,?)";
+      String query = "insert into users (name, email, password, gender, city_id, address, contact, verification_code, user_type_id) value (?,?,?,?,?,?,?,?,?)";
       
       PreparedStatement ps = con.prepareStatement(query);
 
       ps.setString(1,name);
       ps.setString(2,email);
       ps.setString(3,spe.encryptPassword(password));
-      ps.setString(4,userType.getUserTypeId() == 2 ? "O" : "-");
+      ps.setString(4,userType.getUserTypeId()==2?"O":"-");
       ps.setInt(5, city.getCityId());
       ps.setString(6, address != null ? address : "-");  
       ps.setString(7,contact);
       ps.setString(8,verificationCode);
       ps.setInt(9,userType.getUserTypeId());
-      
+
       int val = ps.executeUpdate();
 
       if(val == 1)

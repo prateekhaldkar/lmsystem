@@ -48,24 +48,19 @@ public class LoginServlet extends HttpServlet{
                     nextPage = "library_dashbord.jsp";                    
                 } else if(statusId == Status.INACTIVE) {
                     String message = MessageTemplate.getIncompleteEmailVerificationMessage(email);
-                    nextPage = "message.jsp?color=alert-secondary&message="+message;
+                    nextPage = "message.jsp?img=static/media/images/IncompleteEmailVerification.png&color=text-green-200&message="+message;
                 } else if(statusId == Status.EMAIL_VERIFIED) {
                     String message = MessageTemplate.getIncompleteManualVerificationMessage();
-                    nextPage = "message.jsp?color=alert-secondary&message="+message;
+                    nextPage = "message.jsp?img=static/media/images/IncompleteManualVerification.png&color=text-green-200&message="+message;
                 } else if(statusId == Status.MANUAL_VERIFICATION_DONE) {
                     session.setAttribute("library", library);
                     nextPage = "library_details.jsp"; 
                 } else if(statusId == Status.CLOSED) {
-                    
-                } else if(statusId == Status.BLOCKED) {
-                    
+                } else if(statusId == Status.BLOCKED) {       
                 }
             }
-
-        }else if(userTypeId == 1){
-
+        }else if(userTypeId == 1){   
         }else{
-
         }
         request.getRequestDispatcher(nextPage).forward(request, response);
     }

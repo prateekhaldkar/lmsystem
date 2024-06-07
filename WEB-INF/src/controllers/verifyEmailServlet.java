@@ -22,8 +22,9 @@ public class verifyEmailServlet extends HttpServlet {
     
         String nextPage = "login.jsp?user_type_id="+userTypeId;
     
-        if(userTypeId == 1) 
-            nextPage = "message.jsp?color=alert-success&message="+MessageTemplate.getEmailVerificationSuccessMessage();    
+        if(userTypeId==2 || userTypeId==4){
+            nextPage = "message.jsp?img=static/media/images/email_verified.png&color=text-green-200&message="+MessageTemplate.getEmailVerificationSuccessMessage();
+        }
         request.getRequestDispatcher(nextPage).forward(request, response);
     }
 }

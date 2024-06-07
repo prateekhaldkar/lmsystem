@@ -28,7 +28,7 @@ public class ReSendEmailVerificationLinkServlet extends HttpServlet {
         String emailContent = EmailTemplates.generateWelcomeMail(user.getName(), email, verificationCode, user.getUserType().getUserTypeId());
         EmailSender.sendEmail(email, subject, emailContent);
          
-        String nextPage = "message.jsp?color=alert-success&message="+MessageTemplate.getResendEmailVerificationSuccessMessage(email);
+        String nextPage = "message.jsp?img=static/media/images/check_email.png&color=text-green-200&message="+MessageTemplate.getResendEmailVerificationSuccessMessage(email);
         request.getRequestDispatcher(nextPage).forward(request,response);
     }
 }

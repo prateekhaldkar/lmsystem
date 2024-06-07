@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,12 +78,16 @@
                 <input type="hidden" name="user_type_id" id="user_type_id" value="${param.user_type_id}">
                 <div class="relative z-0 w-full mb-6 group">
                     <input type="email" name="email" id="email" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label for="email" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Email address</label>
+                    <label for="email" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                        Email address
+                    </label>
                 </div>
                 
                 <div class="relative z-0 w-full mb-6 group">
                     <input type="password" name="password" id="password" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label for="password" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Password</label>
+                    <label for="password" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                        Password
+                    </label>
                 </div>
                 
                 <!-- forgot_password -->
@@ -93,9 +97,13 @@
 
                 <div class=" flex flex-col sm:flex-row gap-4">
                     <!-- login btn -->
-                    <button id="btn" type="submit" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-24 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">login</button>
+                    <button id="btn" type="submit" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-24 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">
+                        login
+                    </button>
                     <!-- signup btn -->
-                    <a href="signup.do?user_type_id=${param.user_type_id}" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-24 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">signup</a>
+                    <a href="signup.do?user_type_id=${param.user_type_id}" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-24 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">
+                        signup
+                    </a>
                 </div>
                   
                   
