@@ -29,7 +29,7 @@ public class MessageTemplate {
     public static String getIncompleteEmailVerificationMessage(String email){
         String hiddenEmail = AppUtil.partiallyHiddenEmail(email);
 
-        String  incompleteEmailVerificationmessage ="Click On the Link --> <a href='resend_verification_mail.do?email=" + email + "'>Resend Verification " + "Mail</a> to resend the Email Verification Link..." + "on " + hiddenEmail;
+        String  incompleteEmailVerificationmessage ="Click On the Link --> <a href='resend_verification_mail.do?email=" + email + "'>Resend Verification Mail</a> to resend the Email Verification Link... on " + hiddenEmail;
 
         return incompleteEmailVerificationmessage;
     }

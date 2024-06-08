@@ -56,10 +56,11 @@ public class LoginServlet extends HttpServlet{
                     session.setAttribute("library", library);
                     nextPage = "library_details.jsp"; 
                 } else if(statusId == Status.CLOSED) {
+
                 } else if(statusId == Status.BLOCKED) {       
                 }
             }
-        }else if(userTypeId == 1){   
+        }else if(userTypeId == 1){
         }else{
         }
         request.getRequestDispatcher(nextPage).forward(request, response);

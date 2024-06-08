@@ -20,7 +20,6 @@ public class LogoutServlet extends HttpServlet {
         if(user != null) {
             session.invalidate();
         }
-
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

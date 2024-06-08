@@ -3,7 +3,6 @@ import java.sql.*;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 public class User {
-
   ///////////properties//////////
   private Integer userId;
   private String name;
@@ -46,6 +45,26 @@ public class User {
     this.userType = userType;
   }
 
+  public void saveDobAndProfilePic() {
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
+
+        String query = "update users set dob=?,profile_pic=?,status_id=? where user_id=?";
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setDate(1, dob);
+        ps.setString(2, profilePic);
+        ps.setInt(3, Status.ACTIVE);
+        ps.setInt(4, userId);
+        
+        ps.executeUpdate();
+        
+        con.close();
+    } catch(SQLException|ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+}
 
   public void getEmailVerificationDetails() {
     try {
@@ -114,12 +133,10 @@ public class User {
       } else {
         result = 1; 
       }
-      
       con.close();
     } catch(SQLException|ClassNotFoundException e) {
       e.printStackTrace();
     }
-
     return result;
   }
 
@@ -133,7 +150,7 @@ public class User {
       String query = "update users set verification_code=null,status_id=? where email=? and verification_code=?";
       PreparedStatement ps = con.prepareStatement(query);
 
-      ps.setInt(1, userTypeId == 2 ? Status.EMAIL_VERIFIED : Status.ACTIVE);
+      ps.setInt(1, userTypeId==2?Status.EMAIL_VERIFIED : Status.ACTIVE);
       ps.setString(2, email);
       ps.setString(3, verificationCode);
 

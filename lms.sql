@@ -668,9 +668,16 @@ create table document_type(
 );
 create table status(
     status_id int not null auto_increment primary key,
-    name varchar(25) not null
+    type char(25) not null
 );
-insert into status (name) values('active'),('inactive'),('working'),('left'),('closed'),('blocked'),('phone_verified'),('email_verified');
+INSERT INTO status (status_id, type) VALUES
+(1, 'Active'),
+(2, 'Inactive'),
+(3, 'Blocked'),
+(4, 'Closed'),
+(5, 'Email Verified'),
+(6, 'Manual Verification Done');
+
 create table user_type(
     user_type_id int not null auto_increment primary key,
     type varchar(25) not null
@@ -688,7 +695,7 @@ create table users(
     contact char(10) not null unique,
     profile_pic char(255) null,
     verification_code char(225) null,
-    status_id int not null default 1, 
+    status_id int not null default 2, 
     document_type_id int, 
     document_path varchar(255) null,
     user_type_id int not null default 1, 
@@ -796,9 +803,16 @@ SELECT * FROM states;
 
 SELECT * FROM cities;
 
--- innerjoin
 ==============================================================================================================
+-- innerjoin
 select city_id,city,c.state_id,state from cities as c inner join states as s where c.state_id=s.state_id;
 ==============================================================================================================
 
 UPDATE users SET status_id='8' WHERE email='prateekhaldkar3865@gmail.com';
+
+UPDATE status SET type = 'Active' WHERE status_id = 1;
+UPDATE status SET type = 'Inactive' WHERE status_id = 2;
+UPDATE status SET type = 'Blocked' WHERE status_id = 3;
+UPDATE status SET type = 'Closed' WHERE status_id = 4;
+UPDATE status SET type = 'Email Verified' WHERE status_id = 5;
+UPDATE status SET type = 'Manual Verification Done' WHERE status_id = 6;
