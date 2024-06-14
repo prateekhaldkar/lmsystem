@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import models.Library;
 
-
 @WebServlet("/library_details.do")
 public class LibraryDetailsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
@@ -30,6 +29,11 @@ public class LibraryDetailsServlet extends HttpServlet {
         library.setOpenTiming(openTiming);
         library.setCloseTiming(closeTiming);
         library.setDob(dob);
+
+        library.saveDetails();
+        library.saveDobAndProfilePic();
+
+        response.sendRedirect("library_dashbord.jsp");
 
     }
 }

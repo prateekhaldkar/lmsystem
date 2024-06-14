@@ -20,11 +20,7 @@ public class Library extends User {
   public Library(String name, String email, String password, UserType userType){
     super(name, email, password, userType);
   }
-
-  // public Library(){
-
-  // }
-
+ 
   // methods
 
   public void saveDetails(){
