@@ -41,7 +41,7 @@ public class MessageTemplate {
     }
 
     public static String getIncompleteManualVerificationMessage() {
-        String incompleteManualVerificationMessage = "Manual Verification is Under Process... We Will Inform You Ones It Is Done..";
+        String incompleteManualVerificationMessage = "Manual Verification is Under Process...";
 
         return incompleteManualVerificationMessage;
     }

@@ -25,14 +25,15 @@ public class LoginServlet extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         HttpSession session = request.getSession();
 
-        Integer userTypeId = Integer.parseInt(request.getParameter("user_type_id"));
+        String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        Integer userTypeId = Integer.parseInt(request.getParameter("user_type_id"));
 
         String nextPage = "login.jsp";
 
         if(userTypeId == 2){
-            Library library = new Library(email, password, new UserType(userTypeId));
+            Library library = new Library(name, email, password, new UserType(userTypeId));
             int result = library.login();
 
             if(result == 0){
@@ -54,13 +55,14 @@ public class LoginServlet extends HttpServlet{
                     nextPage = "message.jsp?img=static/media/images/IncompleteManualVerification.png&color=text-green-200&message="+message;
                 } else if(statusId == Status.MANUAL_VERIFICATION_DONE) {
                     session.setAttribute("library", library);
-                    nextPage = "library_details.jsp"; 
+                    nextPage = "library_details.jsp?name="+name; 
                 } else if(statusId == Status.CLOSED) {
 
                 } else if(statusId == Status.BLOCKED) {       
                 }
             }
         }else if(userTypeId == 1){
+            
         }else{
         }
         request.getRequestDispatcher(nextPage).forward(request, response);

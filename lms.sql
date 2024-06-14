@@ -808,7 +808,7 @@ SELECT * FROM cities;
 select city_id,city,c.state_id,state from cities as c inner join states as s where c.state_id=s.state_id;
 ==============================================================================================================
 
-UPDATE users SET status_id='8' WHERE email='prateekhaldkar3865@gmail.com';
+UPDATE status SET status_id='1' WHERE status='INACTIVE';
 
 UPDATE status SET type = 'Active' WHERE status_id = 1;
 UPDATE status SET type = 'Inactive' WHERE status_id = 2;

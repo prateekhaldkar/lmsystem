@@ -17,9 +17,13 @@ public class Library extends User {
   //constructor
   public Library() {}
 
-  public Library(String email, String password, UserType userType){
-    super(email, password, userType);
+  public Library(String name, String email, String password, UserType userType){
+    super(name, email, password, userType);
   }
+
+  // public Library(){
+
+  // }
 
   // methods
 

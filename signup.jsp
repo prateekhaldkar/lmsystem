@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>LMS</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
 
@@ -160,9 +160,7 @@
                         <input placeholder="Select City" list="city" name="city_id" id="city_id" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                         <datalist id="city">
                             <c:forEach var="city" items="${cities}">
-                                <option value="${city.city}(${city.state.state})">
-                                <!-- <option value="${city.city}(${city.state.state})">${city.city}(${city.state.state})</option> -->
-                                <!-- <option value="${city.cityId}">${city.city}(${city.state.state})</option> -->
+                                <option value="${city.city}(${city.state.state})"> 
                             </c:forEach>
                         </datalist>
                     </div>

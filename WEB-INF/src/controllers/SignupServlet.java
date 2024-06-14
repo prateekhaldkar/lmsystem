@@ -48,9 +48,8 @@ public class SignupServlet extends HttpServlet {
             EmailSender.sendEmail(email, subject, emailContent);
 
             String userPath = context.getRealPath("/WEB-INF/uploads/" + UserType.types[userTypeId-1].toLowerCase());
-            File file = new File(userPath, email + "/logo");
+            File file = new File(userPath, email + "/profilePic");
             file.mkdirs();
-
         }
 
         String signupSuccessMessage = MessageTemplate.getSignupSuccessMessage();

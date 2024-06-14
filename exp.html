@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+    <style>
+        .dropzone {
+            border: 2px dashed #4a5568; /* Tailwind's gray-700 */
+            border-radius: 0.375rem; /* Tailwind's rounded-md */
+            background-color: #edf2f7; /* Tailwind's gray-100 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <form action="/profilePic.do" class="dropzone w-1/2 p-6">
+        <div class="dz-message text-center">
+            <h3 class="text-lg text-gray-700">Drag & drop files here or click to upload</h3>
+        </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+    <script>
+        // Dropzone configuration (if needed)
+        Dropzone.options.myDropzone = {
+            // Configuration options
+            paramName: "file",
+            maxFilesize: 2, // MB
+            acceptedFiles: ".jpeg,.jpg,.png,.gif"
+        };
+    </script>
+    
+</body>
+</html>

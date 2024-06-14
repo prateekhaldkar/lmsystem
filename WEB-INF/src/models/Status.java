@@ -10,8 +10,8 @@ public class Status {
   public static final int INACTIVE = 2;
   public static final int BLOCKED = 3;
   public static final int CLOSED = 4;
-  public static final int EMAIL_VERIFIED = 7;
-  public static final int MANUAL_VERIFICATION_DONE = 8;
+  public static final int EMAIL_VERIFIED = 5;
+  public static final int MANUAL_VERIFICATION_DONE = 6;
 
   ///////////constructor//////////
   public Status() {}
