@@ -67,8 +67,9 @@
             </div>
 
             <div class="row">
+                <!-- profilePic_upload -->
                 <div class="col max-w-lg mx-auto">
-                    <form action="profilePic_upload.do" id="libraryProfilePic" style="background-image: linear-gradient(90deg, #1a2662f9 0%, #1f2b6af9 86%)" class="dropzone rounded-xl border-orngl border-2 border-dashed max-w-lg mx-auto"></form>
+                    <form action="profilePic_upload.do" id="libraryProfilePic" style="background-image: linear-gradient(90deg, #1a2662f9 0%, #1f2b6af9 86%)" class="dropzone rounded-xl border-orngl border-3 border-dashed max-w-lg mx-auto"></form>
                     <div class="text-white text-center w-full mb-4 flex-grow" style="display: flex; justify-content: flex-end;">
                         <button type="button" id="upload_btn" class="text-white bg-orngl1 hover:bg-orngl1 focus:ring-2 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 text-center  dark:focus:ring-orng" >Upload</button>
                     </div>
@@ -77,24 +78,61 @@
                 <br>
                 
                 <form action="library_details.do" method="post" class="max-w-lg mx-auto">
-                    <!-- libraryOpentime -->
+
+                    <!-- open_timing -->
                     <div class="relative z-0 w-full mb-6 group">
-                        <input type="time" name="libraryOpentime" id="libraryOpentime" required
+                        <input type="time" name="open_timing" id="open_timing" required
                             class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
-                        <label for="libraryOpentime"
+                        <label for="open_timing"
                             class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
                             Library Open Timing
                         </label>
                     </div>
-                    <!-- libraryclosetime -->
+                    
+                    <!-- close_timing -->
                     <div class="relative z-0 w-full mb-6 group">
-                        <input type="time" name="libraryclosetime" id="libraryclosetime" required
+                        <input type="time" name="close_timing" id="close_timing" required
                             class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
-                        <label for="libraryclosetime"
+                        <label for="close_timing"
                             class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
                             Libraryc Lose Time
                         </label>
                     </div>
+            
+                    <!-- bookIssueDays -->
+                    <div class="relative z-0 w-full mb-6 group">
+                        <input type="number" name="book_issue_days" id="book_issue_days" required placeholder="" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+                        <label for="book_issue_days"
+                            class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Book Issue Days (For how many days will a book be issued?)
+                        </label>
+                    </div>
+                    
+                    <!-- lateFine -->
+                    <div class="relative z-0 w-full mb-6 group">
+                        <input type="number" name="late_fine" id="late_fine" required placeholder="" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+                        <label for="late_fine" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Late fine Charge
+                        </label>
+                    </div>
+                    
+                    <!-- depositAmount -->
+                    <div class="relative z-0 w-full mb-6 group">
+                        <input type="number" name="deposit_amount" id="deposit_amount" placeholder="" required
+                            class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+                        <label for="deposit_amount" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Deposit Amount
+                        </label>
+                    </div>
+                    
+                    <!-- established_on -->
+                    <div class="relative z-0 w-full mb-6 group">
+                        <input type="date" name="dob" id="dob" placeholder="" required class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+                        <label for="dob" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Establishment Date
+                        </label>
+                    </div>
+
                     <!-- details -->
                     <div class="relative z-0 w-full mb-6 group">
                         <label for="details"
@@ -102,9 +140,7 @@
                             About Us
                         </label>
                         <br>
-                        <textarea name="details" id="details" rows="3" col="30"
-                            style="background-image: linear-gradient(90deg, #152056f9 0%, #1b286af9 86%)"
-                            class="rounded-lgform-control block py-4 px-0 w-full text-lg text-gray-800 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"></textarea>
+                        <textarea name="details" id="details" rows="3" col="30" style="background-image: linear-gradient(90deg, #152056f9 0%, #1b286af9 86%)" class="rounded-lgform-control block py-4 px-0 w-full text-lg text-gray-800 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"></textarea>
                     </div>
 
                     <div class="text-white text-center w-full mb-4 flex-grow">

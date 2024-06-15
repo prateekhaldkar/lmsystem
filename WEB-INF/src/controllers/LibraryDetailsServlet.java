@@ -23,11 +23,19 @@ public class LibraryDetailsServlet extends HttpServlet {
         String details = request.getParameter("details");
         Time openTiming = Time.valueOf(request.getParameter("open_timing")+":00");
         Time closeTiming = Time.valueOf(request.getParameter("close_timing")+":00");
-        Date dob = Date.valueOf(request.getParameter("established_on"));
+        Integer bookIssueDays = Integer.parseInt(request.getParameter("book_issue_days"));
+        Integer lateFine = Integer.parseInt(request.getParameter("late_fine"));
+        Integer depositAmount = Integer.parseInt(request.getParameter("deposit_amount"));
+
+        Date dob = Date.valueOf(request.getParameter("dob"));
 
         library.setDetails(details);
         library.setOpenTiming(openTiming);
         library.setCloseTiming(closeTiming);
+        library.setBookIssueDays(bookIssueDays);
+        library.setLateFine(lateFine);
+        library.setDepositAmount(depositAmount);
+
         library.setDob(dob);
 
         library.saveDetails();
