@@ -28,8 +28,7 @@ public class Library extends User {
       Connection con = DriverManager.getConnection(
         "jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234"
       );
-      String query =
-        "insert into libraries (user_id,details,open_timing,close_timing,book_issue_days,late_fine,deposit_amount) value (?,?,?,?,?,?,?)";
+      String query = "insert into libraries (user_id,details,open_timing,close_timing,book_issue_days,late_fine,deposit_amount) value (?,?,?,?,?,?,?)";
 
       PreparedStatement ps = con.prepareStatement(query);
 
@@ -49,37 +48,37 @@ public class Library extends User {
     }
   }
 
-  // public int login() {
-  //   int result = super.login();
+  public int login() {
+    int result = super.login();
 
-  //   if (result == 3 && getStatus().getStatusId() == Status.ACTIVE) {
-  //     try {
-  //       Class.forName("com.mysql.cj.jdbc.Driver");
-  //       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
+    if (result == 3 && getStatus().getStatusId() == Status.ACTIVE) {
+      try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
 
-  //       String query = "select * from libraries where user_id=?";
+        String query = "select * from libraries where user_id=?";
 
-  //       PreparedStatement ps = con.prepareStatement(query);
+        PreparedStatement ps = con.prepareStatement(query);
 
-  //       ps.setInt(1, getUserId());
+        ps.setInt(1, getUserId());
 
-  //       ResultSet rs = ps.executeQuery();
+        ResultSet rs = ps.executeQuery();
 
-  //       if (rs.next()) {
-  //         libraryId = rs.getInt("library_id");
-  //         details = rs.getString("details");
-  //         openTiming = rs.getTime("open_timing");
-  //         closeTiming = rs.getTime("close_timing");
-  //       }
+        if (rs.next()) {
+          libraryId = rs.getInt("library_id");
+          details = rs.getString("details");
+          openTiming = rs.getTime("open_timing");
+          closeTiming = rs.getTime("close_timing");
+        }
 
-  //       con.close();
-  //     } catch (SQLException | ClassNotFoundException e) {
-  //       e.printStackTrace();
-  //     }
-  //   }
+        con.close();
+      } catch (SQLException | ClassNotFoundException e) {
+        e.printStackTrace();
+      }
+    }
 
-  //   return result;
-  // }
+    return result;
+  }
 
   //GET/SET
 

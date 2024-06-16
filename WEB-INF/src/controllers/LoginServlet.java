@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import models.User;
 import models.Library;
+import models.Publisher;
 import models.Status;
 import models.UserType;
 
@@ -19,7 +20,7 @@ import utils.MessageTemplate;
 @WebServlet("/login.do")
 public class LoginServlet extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("login.jsp").forward(request, response);       
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
@@ -45,7 +46,7 @@ public class LoginServlet extends HttpServlet{
                 int statusId = library.getStatus().getStatusId();
                 if (statusId == Status.ACTIVE){
                     session.setAttribute("user",library);
-                    nextPage = "library_dashbord.jsp";                    
+                    nextPage = "library_dashboard.jsp";                    
                 } else if(statusId == Status.INACTIVE) {
                     String message = MessageTemplate.getIncompleteEmailVerificationMessage(email);
                     nextPage = "message.jsp?img=static/media/images/IncompleteEmailVerification.png&color=text-green-200&message="+message;
@@ -60,8 +61,9 @@ public class LoginServlet extends HttpServlet{
                 } else if(statusId == Status.BLOCKED) {       
                 }
             }
-        }else if(userTypeId == 1){
-            
+        }else if(userTypeId == 4){
+            Publisher publisher = new Publisher(email, password, new UserType(userTypeId));
+            int result = Publisher.login();
         }else{
         }
         request.getRequestDispatcher(nextPage).forward(request, response);

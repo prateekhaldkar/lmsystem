@@ -683,7 +683,7 @@ create table user_type(
     type varchar(25) not null
 );
 
-insert into user_type(type) values('candidate'),('librarian'),('library'),('publisher');
+insert into user_type(type) values('candidate'),('library'),('librarian'),('publisher');
 
 create table users(
     user_id int not null auto_increment primary key,

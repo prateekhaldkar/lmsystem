@@ -41,7 +41,7 @@ public class LibraryDetailsServlet extends HttpServlet {
         library.saveDetails();
         library.saveDobAndProfilePic();
 
-        response.sendRedirect("library_dashbord.jsp");
+        response.sendRedirect("library_dashboard.jsp");
 
     }
 }
