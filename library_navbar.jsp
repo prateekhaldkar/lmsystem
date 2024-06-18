@@ -1,4 +1,4 @@
-<!-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="bg-white dark:bg-gray-900 fixed h-20 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="library_dashboard.jsp" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -9,7 +9,15 @@
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <!-- viewProfile logo -->
             <div id="viewProfile" class="cursor-pointer rounded-full bg-white border-white">
-                <img src="profilePic.do" class="h-12 w-12 rounded-full">
+                <c:choose>
+                    <c:when test="${empty user.profilePic}">
+                        <img src="static/media/images/dpp.png" class="h-12 w-12 rounded-full">
+                    </c:when>
+                    <c:otherwise>
+                        <img src="profilePic.do" class="h-12 w-12 rounded-full">
+                    </c:otherwise>
+                </c:choose>
+                
             </div>
             
             

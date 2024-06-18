@@ -16,8 +16,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
+    
 import models.Library;
+import models.Publisher;
 
 @WebServlet("/profilePic_upload.do")
 public class UploadProfilePicServlet extends HttpServlet {
@@ -26,6 +27,7 @@ public class UploadProfilePicServlet extends HttpServlet {
         Library library = (Library)session.getAttribute("library");
 
         ServletContext context = getServletContext();
+        Integer userTypeId = Integer.parseInt(request.getParameter("user_type_id"));
 
         if(library!=null) {
             if(ServletFileUpload.isMultipartContent(request)) {

@@ -62,8 +62,6 @@ public class LoginServlet extends HttpServlet{
                 }
             }
         }else if(userTypeId == 4){
-            Publisher publisher = new Publisher(email, password, new UserType(userTypeId));
-            int result = Publisher.login();
         }else{
         }
         request.getRequestDispatcher(nextPage).forward(request, response);

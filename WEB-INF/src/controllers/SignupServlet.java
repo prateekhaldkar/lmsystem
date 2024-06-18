@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.User;
+import models.Publisher;
 import models.City;
 import models.UserType;
 import utils.AppUtil;
@@ -33,16 +34,22 @@ public class SignupServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String contact = request.getParameter("contact");
-        // Integer cityId = Integer.parseInt(request.getParameter("city_id"));
         Integer userTypeId = Integer.parseInt(request.getParameter("user_type_id"));
 
         String verificationCode = AppUtil.generateEmailVerificationCode();
         User user = new User(name, email, password, SplitCities.splitCity (request.getParameter("city_id"), (ArrayList<City>)context.getAttribute("cities")), contact,  verificationCode, new UserType(userTypeId));
 
-        if( userTypeId == 2 ){
+        if( userTypeId==2 || userTypeId==4){
             user.setAddress(request.getParameter("address"));
         }
-        if( user.saveUser() ){
+        if( user.saveUser()){
+            if(userTypeId == 4){
+                String details = request.getParameter("details");
+                String website = request.getParameter("website");
+                Publisher publisher = new Publisher(details,website);
+                
+                publisher.savePublisher(user.getUserId());
+            }
             String subject = "Email Verification Mail";
             String emailContent = EmailTemplates.generateWelcomeMail(name, email, verificationCode, userTypeId);
             EmailSender.sendEmail(email, subject, emailContent);

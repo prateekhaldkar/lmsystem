@@ -12,6 +12,11 @@ public class Publisher extends User {
   //constructor
   public Publisher() {}
 
+  public Publisher(String details, String website) {
+    this.details = details;
+    this.website = website;
+  }
+
   public Publisher(String email, String password, UserType userType) {
     super(email, password, userType);
   }
@@ -24,7 +29,9 @@ public class Publisher extends User {
     if (result == 3 && getStatus().getStatusId() == Status.ACTIVE) {
       try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
+        Connection con = DriverManager.getConnection(
+          "jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234"
+        );
 
         String query = "select * from publisher where user_id=?";
 
@@ -49,7 +56,26 @@ public class Publisher extends User {
     return result;
   }
 
+  public void savePublisher(Integer userId) {
+    try {
+      Class.forName("com.mysql.cj.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+    try (
+      Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234")) {
+      String query ="insert into publisher (user_id, details, website) value (?,?,?)";
 
+      PreparedStatement ps = con.prepareStatement(query);
+      ps.setInt(1, userId);
+      ps.setString(2, details);
+      ps.setString(3, website);
+
+      ps.executeUpdate();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
 
   //GET/SET
 

@@ -16,7 +16,14 @@
             <div class="bg-slate-900 rounded-lg text-white p-8 rounded shadow-lg w-11/12 md:w-1/2">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <img src="profilePic.do" class="w-10 h-10 rounded-full">
+                        <c:choose>
+                            <c:when test="${empty user.profilePic}">
+                                <img src="static/media/images/dpp.png" class="w-10 h-10 rounded-full">
+                            </c:when>
+                            <c:otherwise>
+                                <img src="profilePic.do" class="w-10 h-10 rounded-full">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="ml-4">
                         <p class="text-2xl mb-4">${user.name}</p>
