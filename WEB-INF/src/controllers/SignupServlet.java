@@ -39,25 +39,19 @@ public class SignupServlet extends HttpServlet {
         String verificationCode = AppUtil.generateEmailVerificationCode();
         User user = new User(name, email, password, SplitCities.splitCity (request.getParameter("city_id"), (ArrayList<City>)context.getAttribute("cities")), contact,  verificationCode, new UserType(userTypeId));
 
-        if( userTypeId==2 || userTypeId==4){
-            user.setAddress(request.getParameter("address"));
-        }
+        user.setAddress(request.getParameter("address"));
+        
         if( user.saveUser()){
-            if(userTypeId == 4){
-                String details = request.getParameter("details");
-                String website = request.getParameter("website");
-                Publisher publisher = new Publisher(details,website);
                 
-                publisher.savePublisher(user.getUserId());
-            }
             String subject = "Email Verification Mail";
             String emailContent = EmailTemplates.generateWelcomeMail(name, email, verificationCode, userTypeId);
             EmailSender.sendEmail(email, subject, emailContent);
-
+            
             String userPath = context.getRealPath("/WEB-INF/uploads/" + UserType.types[userTypeId-1].toLowerCase());
             File file = new File(userPath, email + "/profilePic");
             file.mkdirs();
         }
+        
 
         String signupSuccessMessage = MessageTemplate.getSignupSuccessMessage();
         response.sendRedirect("message.jsp?img=static/media/images/check_email.png&color=text-green-200&message="+signupSuccessMessage);

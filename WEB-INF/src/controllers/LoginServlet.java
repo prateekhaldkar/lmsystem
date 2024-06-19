@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet{
             }else if(result == 1){
                 request.setAttribute("email_error_message", MessageTemplate.getIncorrectEmailMessage());
             }else if(result == 2){
-                 request.setAttribute("password_error_message",MessageTemplate.getInvalidPasswordMessage());
+                request.setAttribute("password_error_message",MessageTemplate.getInvalidPasswordMessage());
             }else if(result == 3){
                 int statusId = library.getStatus().getStatusId();
                 if (statusId == Status.ACTIVE){
@@ -62,7 +62,38 @@ public class LoginServlet extends HttpServlet{
                 }
             }
         }else if(userTypeId == 4){
-        }else{
+            Publisher publisher = new Publisher(email, password, new UserType(userTypeId));
+            int result = publisher.login();
+
+            if(result == 0){}
+            else if( result == 1){
+                request.setAttribute("email_error_message", MessageTemplate.getIncorrectEmailMessage());
+            }else if(result == 2){
+                request.setAttribute("password_error_message", MessageTemplate.getInvalidPasswordMessage());
+            }else if(result == 3){
+                int statusId = publisher.getStatus().getStatusId();
+                if(statusId == Status.ACTIVE){
+                    session.setAttribute("user", publisher);
+                    nextPage = "publisher_dashboard.jsp";
+                }else if(statusId == Status.INACTIVE){
+                    String message = MessageTemplate.getIncompleteEmailVerificationMessage(email);
+                    nextPage = "message.jsp?img=static/media/images/IncompleteEmailVerification.png&color=text-green-200&message="+message;
+                }else if(statusId == Status.EMAIL_VERIFIED) {
+                    String message = MessageTemplate.getIncompleteManualVerificationMessage();
+                    nextPage = "message.jsp?img=static/media/images/IncompleteManualVerification.png&color=text-green-200&message="+message;
+                } else if(statusId == Status.MANUAL_VERIFICATION_DONE) {
+                    session.setAttribute("publisher", publisher);
+                    nextPage = "publisher_details.jsp"; 
+                } else if(statusId == Status.CLOSED) {
+
+                } else if(statusId == Status.BLOCKED) {       
+                }
+            }
+
+        }else if(userTypeId == 3){
+            
+        }else if(userTypeId == 1){
+
         }
         request.getRequestDispatcher(nextPage).forward(request, response);
     }
