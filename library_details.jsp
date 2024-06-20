@@ -66,9 +66,11 @@
             </div>
 
             <div class="row">
-                <!-- profilePic_upload -->
+                <!-- library_profilePic_upload -->
                 <div class="col max-w-lg mx-auto">
-                    <form action="profilePic_upload.do" id="libraryProfilePic" style="background-image: linear-gradient(90deg, #1a2662f9 0%, #1f2b6af9 86%)" class="dropzone rounded-xl border-orngl border-3 border-dashed max-w-lg mx-auto"></form>
+                    <form action="library_profilePic_upload.do" id="libraryProfilePic" style="background-image: linear-gradient(90deg, #1a2662f9 0%, #1f2b6af9 86%)" class="dropzone rounded-xl border-orngl border-3 border-dashed max-w-lg mx-auto">
+
+                    </form>
                     <div class="text-white text-center w-full mb-4 flex-grow" style="display: flex; justify-content: flex-end;">
                         <button type="button" id="upload_btn" class="text-white bg-orngl1 hover:bg-orngl1 focus:ring-2 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 text-center  dark:focus:ring-orng" >Upload</button>
                     </div>

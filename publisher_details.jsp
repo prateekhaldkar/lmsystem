@@ -68,7 +68,9 @@
             <div class="row">
                 <!-- profilePic_upload -->
                 <div class="col max-w-lg mx-auto">
-                    <form action="profilePic_upload.do" id="libraryProfilePic" style="background-image: linear-gradient(90deg, #1a2662f9 0%, #1f2b6af9 86%)" class="dropzone rounded-xl border-orngl border-3 border-dashed max-w-lg mx-auto"></form>
+                    <form action="publisher_profilePic_upload.do" id="libraryProfilePic" style="background-image: linear-gradient(90deg, #1a2662f9 0%, #1f2b6af9 86%)" class="dropzone rounded-xl border-orngl border-3 border-dashed max-w-lg mx-auto">
+                        <input type="hidden" name="user_type_id" id="user_type_id" value="${param.user_type_id}">
+                    </form>
                     <div class="text-white text-center w-full mb-4 flex-grow" style="display: flex; justify-content: flex-end;">
                         <button type="button" id="upload_btn" class="text-white bg-orngl1 hover:bg-orngl1 focus:ring-2 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 text-center  dark:focus:ring-orng" >Upload</button>
                     </div>
@@ -76,15 +78,20 @@
                 
                 <br>
                 
-                <form action="library_details.do" method="post" class="max-w-lg mx-auto">
+                <form action="publisher_details.do" method="post" class="max-w-lg mx-auto">
                     
+
+                    <!-- established_on -->
+                    <div class="relative z-0 w-full mb-6 group">
+                        <input type="date" name="dob" id="dob" placeholder="" required class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+                        <label for="dob" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Establishment Date
+                        </label>
+                    </div>
+
 
                     <!-- details -->
                     <div class="relative z-0 w-full mb-6 group">
-                        <!-- <label for="details" class="absolute text-lg text-gray-500 dark:text-white  rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                            Details
-                        </label> -->
-                        <!-- <br> -->
                         <textarea name="details" placeholder="Details" id="details" rows="1" col="30" style="background-image: linear-gradient(90deg, #152056f9 0%, #1b286af9 86%)" class="block placeholder-slate-50 rounded-lgform-control block py-4 px-0 w-full text-lg text-gray-800 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"></textarea>
                     </div>
                     

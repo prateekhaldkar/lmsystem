@@ -174,9 +174,9 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button type="submit"
-                            class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-48 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">creat
-                            account</button>
+                        <button type="submit" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-48 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">
+                            creat account
+                        </button>
                     </div>
 
                 </form>

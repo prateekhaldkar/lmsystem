@@ -12,16 +12,33 @@ public class Publisher extends User {
   //constructor
   public Publisher() {}
 
-  public Publisher(String details, String website) {
-    this.details = details;
-    this.website = website;
-  }
-
   public Publisher(String email, String password, UserType userType) {
     super(email, password, userType);
   }
-
+  
   // methods
+
+  public void saveDetails() {
+    try {
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      Connection con = DriverManager.getConnection(
+        "jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234"
+      );
+      String query = "insert into publishers (user_id,details,website) value (?,?,?)";
+
+      PreparedStatement ps = con.prepareStatement(query);
+
+      ps.setInt(1, getUserId());
+      ps.setString(2, details);
+      ps.setString(3, website);
+
+      ps.executeUpdate();
+
+      con.close();
+    } catch (SQLException | ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+  }
 
   public int login() {
     int result = super.login();

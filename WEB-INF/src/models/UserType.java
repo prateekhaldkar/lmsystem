@@ -6,7 +6,7 @@ public class UserType {
   private Integer userTypeId;
   private String type;
 
-  public static String[] types = {"candidate", "library", "publisher","librarian"};
+  public static String[] types = {"candidate", "library", "librarian","publisher"};
   
   ///////////constructor//////////
   public UserType(Integer userTypeId) {

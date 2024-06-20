@@ -18,16 +18,14 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
     
 import models.Library;
-import models.Publisher;
 
-@WebServlet("/profilePic_upload.do")
-public class UploadProfilePicServlet extends HttpServlet {
+@WebServlet("/library_profilePic_upload.do")
+public class UploadLibraryProfilePicServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         Library library = (Library)session.getAttribute("library");
 
         ServletContext context = getServletContext();
-        Integer userTypeId = Integer.parseInt(request.getParameter("user_type_id"));
 
         if(library!=null) {
             if(ServletFileUpload.isMultipartContent(request)) {
@@ -52,7 +50,6 @@ public class UploadProfilePicServlet extends HttpServlet {
                     e.printStackTrace();
                 }                 
             }
-        } else {
-        }
+        } 
     }
 }

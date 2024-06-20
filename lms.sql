@@ -818,3 +818,11 @@ UPDATE status SET type = 'Blocked' WHERE status_id = 3;
 UPDATE status SET type = 'Closed' WHERE status_id = 4;
 UPDATE status SET type = 'Email Verified' WHERE status_id = 5;
 UPDATE status SET type = 'Manual Verification Done' WHERE status_id = 6;
+
+
+
+=====================================================
+delete from libraries;
+delete from publishers;
+delete from librarians;
+delete from users;
