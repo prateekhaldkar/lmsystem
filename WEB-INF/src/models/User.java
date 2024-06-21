@@ -98,7 +98,7 @@ public class User {
 
 
   public int login() {
-    int result = 0;   // exception generated 
+    int result = 0; 
 
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
@@ -188,7 +188,7 @@ public class User {
       ps.setString(1,name);
       ps.setString(2,email);
       ps.setString(3,spe.encryptPassword(password));
-      ps.setString(4,userType.getUserTypeId()==2?"O":"-");
+      ps.setString(4,userType.getUserTypeId()==2 || userType.getUserTypeId()==4 ? "O":"-");
       ps.setInt(5, city.getCityId());
       ps.setString(6, address != null ? address : "-");  
       ps.setString(7,contact);
@@ -213,7 +213,6 @@ public class User {
     return flag;
   }
 
-  /////////////GET-SET///////////
   public Integer getUserId() {
     return userId;
   }
@@ -244,6 +243,14 @@ public class User {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public Character getGender() {
+    return gender;
+  }
+
+  public void setGender(Character gender) {
+    this.gender = gender;
   }
 
   public Date getDob() {
@@ -317,4 +324,7 @@ public class User {
   public void setUserType(UserType userType) {
     this.userType = userType;
   }
+
+  /////////////GET-SET///////////
+    
 }

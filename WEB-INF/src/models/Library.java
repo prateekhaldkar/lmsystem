@@ -25,9 +25,7 @@ public class Library extends User {
   public void saveDetails() {
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
-      Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234"
-      );
+      Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
       String query = "insert into libraries (user_id,details,open_timing,close_timing,book_issue_days,late_fine,deposit_amount) value (?,?,?,?,?,?,?)";
 
       PreparedStatement ps = con.prepareStatement(query);

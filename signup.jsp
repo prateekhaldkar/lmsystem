@@ -69,7 +69,7 @@
                                         PUBLISHER
                                     </c:otherwise>
                                 </c:choose>
-                                SIGNUP
+                                    SIGNUP
                             </p>
                         </div>
                     </div>
@@ -101,31 +101,10 @@
                                     Publisher
                                 </c:otherwise>
                             </c:choose>
-                            Name
+                                    Name
                         </label>
                     </div>
 
-                    <!-- gender -->
-                    <!-- <div class="flex py-4">
-                        <div class="pr-5 flex items-center me-4">
-                            <input id="male" type="radio" value="" name="inline-radio-group"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="male"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
-                        </div>
-                        <div class="px-5 flex items-center me-4">
-                            <input id="female" type="radio" value="" name="inline-radio-group"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="female"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
-                        </div>
-                        <div class="px-5 flex items-center me-4">
-                            <input id="others" type="radio" value="" name="inline-radio-group"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="others"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Others</label>
-                        </div>
-                    </div> -->
 
                     <!-- email -->
                     <div class="relative z-0 w-full mb-6 group">
@@ -168,6 +147,40 @@
                             class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Phone
                             number</label>
                     </div>
+
+
+
+                    <!-- gender -->
+                    <!-- <c:choose>
+                        <c:when test="${param.user_type_id==3}">
+
+                            <label for="gender"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                gender
+                            </label>
+                            <div class="flex py-4">
+                                <div class="pr-5 flex items-center me-4">
+                                    <input id="male" type="radio" value="" name="inline-radio-group"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="male"
+                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
+                                </div>
+                                <div class="px-5 flex items-center me-4">
+                                    <input id="female" type="radio" value="" name="inline-radio-group"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="female"
+                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
+                                </div>
+                                <div class="px-5 flex items-center me-4">
+                                    <input id="others" type="radio" value="" name="inline-radio-group"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="others"
+                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Others</label>
+                                </div>
+                            </div>
+                        </c:when>
+                     </c:choose> -->
+
+
 
                     <div class="text-green-400 underline decoration-sky-500 w-full mb-6 group">
                         <a href="login.do?user_type_id=${param.user_type_id}">already have an account</a>

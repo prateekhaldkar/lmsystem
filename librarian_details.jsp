@@ -50,7 +50,7 @@
 
         <div class="container">
             <div class="row">
-                <%@ include file="publisher_navbar.jsp" %>
+                <%@ include file="librarian_navbar.jsp" %>
             </div>
             <br><br><br>
 
@@ -58,7 +58,7 @@
                 <div class="w-full flex items-center justify-center p-4">
                     <div class="m-8 p-4 h-full flex flex-col items-center justify-center w-full">
                         <div id="wtl" class="responsive-text text-white text-center w-full mb-4 flex-grow">
-                            <p class="xl:text-4xl font-bold">FILL PUBLISHER DETAILS</p>
+                            <p class="xl:text-4xl font-bold">FILL LIBRARIAN DETAILS</p>
                             <hr class=" sm:w-52 md:w-1/2 border-t-4 my-2 mx-auto border-orng">
                         </div>
                     </div>
@@ -68,7 +68,7 @@
             <div class="row">
                 <!-- profilePic_upload -->
                 <div class="col max-w-lg mx-auto">
-                    <form action="publisher_profilePic_upload.do" id="publisherProfilePic" style="background-image: linear-gradient(90deg, #1a2662f9 0%, #1f2b6af9 86%)" class="dropzone rounded-xl border-orngl border-3 border-dashed max-w-lg mx-auto">
+                    <form action="librarian_profilePic_upload.do" id="librarianProfilePic" style="background-image: linear-gradient(90deg, #1a2662f9 0%, #1f2b6af9 86%)" class="dropzone rounded-xl border-orngl border-3 border-dashed max-w-lg mx-auto">
                         <input type="hidden" name="user_type_id" id="user_type_id" value="${param.user_type_id}">
                     </form>
                     <div class="text-white text-center w-full mb-4 flex-grow" style="display: flex; justify-content: flex-end;">
@@ -78,28 +78,31 @@
                 
                 <br>
                 
-                <form action="publisher_details.do" method="post" class="max-w-lg mx-auto">
+                <form action="librarian_details.do" method="post" class="max-w-lg mx-auto">
                     
 
-                    <!-- established_on -->
+                    <!-- Date Of Birth -->
                     <div class="relative z-0 w-full mb-6 group">
                         <input type="date" name="dob" id="dob" placeholder="" required class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
                         <label for="dob" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                            Establishment Date
+                            Date Of Birth
                         </label>
                     </div>
-
-
-                    <!-- details -->
-                    <div class="relative z-0 w-full mb-6 group">
-                        <textarea name="details" placeholder="Details" id="details" rows="1" col="30" style="background-image: linear-gradient(90deg, #152056f9 0%, #1b286af9 86%)" class="block placeholder-slate-50 rounded-lgform-control block py-4 px-0 w-full text-lg text-gray-800 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"></textarea>
-                    </div>
                     
-                    <!-- website -->
+                    <!-- qualification -->
                     <div class="relative z-0 w-full mb-6 group">
                         <input type="url" name="website" id="website" placeholder="" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
                         <label for="website" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
                             Website
+                        </label>
+                    </div>
+                    
+                    
+                    <!-- experience -->
+                    <div class="relative z-0 w-full mb-6 group">
+                        <input type="url" name="experience" id="experience" placeholder="" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+                        <label for="experience" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Experience(in years)
                         </label>
                     </div>
 
@@ -119,7 +122,7 @@
 
         Dropzone.autoDiscover = false;
 
-        const dropzone = new Dropzone('#publisherProfilePic', {
+        const dropzone = new Dropzone('#librarianProfilePic', {
             maxFiles: 1,
             maxFilesize: 1,
             acceptedFiles: '.png,.jpg',

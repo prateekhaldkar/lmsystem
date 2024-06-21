@@ -17,38 +17,39 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
     
-import models.Publisher;
+import models.Librarian;
 
-@WebServlet("/publisher_profilePic_upload.do")
-public class UploadPublisherProfilePicServler extends HttpServlet {
+@WebServlet("/librarian_profilePic_upload.do")
+public class UploadLibrarianProfilePicServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        Publisher publisher = (Publisher)session.getAttribute("publisher");
+        Librarian librarian = (Librarian)session.getAttribute("librarian");
 
         ServletContext context = getServletContext();
 
-        if(publisher!=null) {
+        if(librarian!=null) {
             if(ServletFileUpload.isMultipartContent(request)) {
                 try {
                     List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-                    FileItem item = items.get(1);
-                    
+                    FileItem item = items.get(2);
+    
                     System.out.println(item.getName());
                     String fileName = "profilePic."+item.getName().split("\\.")[1];
-                    publisher.setProfilePic(fileName);
+                    librarian.setProfilePic(fileName);
 
-                    String uploadPath = context.getRealPath("/WEB-INF/uploads/publisher/" + publisher.getEmail()+"/profilePic");
+                    String uploadPath = context.getRealPath("/WEB-INF/uploads/librarian/" + librarian.getEmail()+"/profilePic");
 
-                    File file = new File(uploadPath, fileName);
+                    File file = new File(uploadPath, fileName);                    
                     try{
                         item.write(file);
                     }catch(Exception e) {
                         e.printStackTrace();
-                    }     
+                    }    
+                    
                 } catch(FileUploadException e) {
                     e.printStackTrace();
                 }                 
             }
-        }
+        } 
     }
 }
