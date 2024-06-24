@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="bg-white dark:bg-gray-900 fixed h-20 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="library_dashboard.jsp" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="publisher_dashboard.jsp" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="static/media/images/reading-book.png" class="h-12" alt="logo">
-            <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">LMS</span>
+            <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">${user.name}</span>
         </a>
         
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -47,27 +47,3 @@
         </div>
     </div>
 </nav>
-
-
-<script>
-    //toggle-button
-    document.getElementById('navbar-toggle').addEventListener('click', function () {
-        var navbar = document.getElementById('navbar-sticky');
-        navbar.classList.toggle('hidden');
-    });
-
-
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            orng: '#f36d06',
-            clifford: '#da373d',
-          }
-        }
-      }
-    }
-
-
-
-</script>

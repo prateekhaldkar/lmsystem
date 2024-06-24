@@ -51,12 +51,6 @@ public class Librarian extends User {
 
   public int login(){
     int result = super.login();
-    
-    // test
-    System.out.println("1" + Status.ACTIVE + "-");
-    System.out.println("2" + getStatus().getStatusId()+"--");
-    System.out.println("3" + (getStatus().getStatusId() == Status.ACTIVE)+"---");
-
 
     if(result == 3 && getStatus().getStatusId() == Status.ACTIVE){
       try {

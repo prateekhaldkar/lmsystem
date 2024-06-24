@@ -54,6 +54,7 @@ public class User {
         PreparedStatement ps = con.prepareStatement(query);
 
         ps.setDate(1, dob);
+        System.out.println("-"+profilePic+"-");
         ps.setString(2, profilePic);
         ps.setInt(3, Status.ACTIVE);
         ps.setInt(4, userId);
@@ -61,10 +62,10 @@ public class User {
         ps.executeUpdate();
         
         con.close();
-    } catch(SQLException|ClassNotFoundException e) {
+    }catch(SQLException|ClassNotFoundException e) {
         e.printStackTrace();
     }
-}
+  }
 
   public void getEmailVerificationDetails() {
     try {
@@ -150,7 +151,7 @@ public class User {
       String query = "update users set verification_code=null,status_id=? where email=? and verification_code=?";
       PreparedStatement ps = con.prepareStatement(query);
 
-      ps.setInt(1, userTypeId==2?Status.EMAIL_VERIFIED : Status.ACTIVE);
+      ps.setInt(1, userTypeId==2 || userTypeId==4 || userTypeId==3?Status.EMAIL_VERIFIED : Status.ACTIVE);
       ps.setString(2, email);
       ps.setString(3, verificationCode);
 

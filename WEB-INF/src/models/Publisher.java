@@ -48,7 +48,7 @@ public class Publisher extends User {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
 
-        String query = "select * from publisher where user_id=?";
+        String query = "select * from publishers where user_id=?";
 
         PreparedStatement ps = con.prepareStatement(query);
 

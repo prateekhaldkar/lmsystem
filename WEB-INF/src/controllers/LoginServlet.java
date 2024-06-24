@@ -86,7 +86,6 @@ public class LoginServlet extends HttpServlet{
                     session.setAttribute("publisher", publisher);
                     nextPage = "publisher_details.jsp"; 
                 } else if(statusId == Status.CLOSED) {
-
                 } else if(statusId == Status.BLOCKED) {       
                 }
             }

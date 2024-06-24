@@ -7,9 +7,16 @@ public class MessageTemplate {
         return signupSuccessMessage;
     }
 
+    public static String getEmailVerificationSuccessAndPendingMannualVarificationMessage(){
+
+        String emailVerificationSuccessAndPendingMannualVarificationMessage = "Your Email is verified. Pending Your Mannual Verification.";
+
+        return emailVerificationSuccessAndPendingMannualVarificationMessage;
+    }
+
     public static String getEmailVerificationSuccessMessage(){
 
-        String emailVerificationSuccessMessage = "Your Email is verified. Panding Your Mannual Verification.";
+        String emailVerificationSuccessMessage = "Your Email is successfully verified.";
 
         return emailVerificationSuccessMessage;
     }

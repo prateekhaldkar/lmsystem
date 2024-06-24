@@ -30,7 +30,7 @@
                     </div>
                 </div>
                                                   
-                <p class="mb-4">This is a simple modal example.</p>
+                <p class="mb-4">This is a view profile</p>
                 <div class="flex justify-between">
                     <button id="viewprofileclose-modal" class="bg-blue-500 text-white px-4 py-2 rounded">Close</button>
                     <button onclick="window.location.href='logout.do'" class="bg-blue-500 text-white px-4 py-2 rounded">Logout</button>

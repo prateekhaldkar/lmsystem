@@ -49,9 +49,9 @@
     <body style="background-image: linear-gradient(90deg, #0f172a 0%, #20307e 86%)">
 
         <div class="container">
-            <div class="row">
+            <!-- <div class="row">
                 <%@ include file="publisher_navbar.jsp" %>
-            </div>
+            </div> -->
             <br><br><br>
 
             <div class="row">

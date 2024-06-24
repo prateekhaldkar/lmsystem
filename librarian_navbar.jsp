@@ -3,7 +3,7 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="librarian_dashboard.jsp" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="static/media/images/reading-book.png" class="h-12" alt="logo">
-            <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">LMS</span>
+            <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">${user.name}</span>
         </a>
         
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
