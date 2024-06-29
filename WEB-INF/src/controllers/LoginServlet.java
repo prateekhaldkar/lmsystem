@@ -93,7 +93,6 @@ public class LoginServlet extends HttpServlet{
         }else if(userTypeId == 3){
             Librarian librarian = new Librarian(email, password, new UserType(userTypeId));
             int result = librarian.login();
-
             if(result == 0){}
             else if(result == 1){
                 request.setAttribute("email_error_message", MessageTemplate.getIncorrectEmailMessage());
@@ -116,6 +115,7 @@ public class LoginServlet extends HttpServlet{
             }
             
         }else if(userTypeId == 1){
+            
 
         }
         request.getRequestDispatcher(nextPage).forward(request, response);

@@ -657,6 +657,8 @@ create table categories(
     category_id int not null auto_increment primary key,
     name varchar(50) not null
 );
+INSERT INTO categories (name) VALUES ('General Narrative'),('Mystery'),('Horror'),('Fantasy'),('Science Narrative'),('Historical Narrative'),('Children’s Narrative'),('Biography & Autobiography'),('Health & Wellness'),('Travel'),('True Crime'),('History'),('Science'),('Philosophy'),('Religion & Spirituality'),('Cooking'),('Art & Photography'),('Business & Economics'),('Politics'),('Technology'),('Graphic Novels'),('Poetry'),('Drama'),('Essays'),('Short Stories'),('Mathematics'),('physics'),('Chemistry'),('Biology'),('Geography'),('Language Arts'),('Computer Science'),('Economics');
+
 create table gender(
     gender_id int not null auto_increment primary key,
     gender_type varchar(10) not null 

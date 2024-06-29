@@ -155,41 +155,52 @@
                         Publish New Book
                     </h3>
                 </div>
-              <!-- Modal body -->
-              <div class="p-4 md:p-5 space-y-4">
-                <form action="signup.do" method="post" class="max-w-lg mx-auto">
-                    <input type="hidden" name="user_type_id" id="user_type_id" value="${param.user_type_id}">
+                
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 space-y-4">
+                    <form action="#" method="post" class="max-w-lg mx-auto">
+                        <input type="hidden" name="user_type_id" id="user_type_id" value="${param.user_type_id}">
 
-                    <!-- Book Name -->
-                    <div class="relative z-0 w-full mb-6 group">
-                        <input type="text" name="name" id="name" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                        <label for="name"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                            Book Name
-                        </label>
-                    </div>
-
-                    
-                    <!-- address -->
-                    <div class="relative z-0 w-full mb-6 group">
-                        <input type="text" name="address" id="address" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                        <label for="address" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Address</label>
-                    </div>
+                        <!-- Book Name -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="name" id="name" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="name"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Book Name
+                            </label>
+                        </div>
 
                     
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button type="submit" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-48 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">
-                            creat account
-                        </button>
-                    </div>
+                        <!-- ISBN NO. -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="number" name="isbn" id="isbn" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="isbn" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">ISBN no.</label>
+                        </div>
+                    
+                        <!-- title -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="title" id="title" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="title" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8"> Book Title</label>
+                        </div>
 
-                </form>
+                        <!-- book categories -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input placeholder="Select Book Category" list="category" name="category_id" id="category_id" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            <datalist id="category">
+                                <c:forEach var="category" items="${categories}">
+                                    <option value="${city.city}(${city.state.state})"> 
+                                </c:forEach>
+                            </datalist>
+                        </div>
 
+                    
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button type="submit" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-48 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">
+                                Done
+                            </button>
+                        </div>
 
-
-              </div>
-                <!-- Modal footer -->
-                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                    <button id="" data-modal-hide="default-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                    </form>
+                
                 </div>
           </div>
       </div>
