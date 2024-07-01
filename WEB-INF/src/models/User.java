@@ -97,7 +97,6 @@ public class User {
     }
   }
 
-
   public int login() {
     int result = 0; 
 

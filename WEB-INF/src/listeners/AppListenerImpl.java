@@ -5,6 +5,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import models.City;
+import models.Category;
 import utils.EmailSender;
 
 import java.util.ArrayList;
@@ -24,6 +25,11 @@ public class AppListenerImpl implements ServletContextListener {
 
         ArrayList<City> cities = City.collectAllCities();
         context.setAttribute("cities", cities);
+        
+        ArrayList<Category> categories = Category.collectAllCategories();
+        context.setAttribute("categories", categories);
+
+    
     }
 
     public void contextDestroyed(ServletContextEvent ev) {

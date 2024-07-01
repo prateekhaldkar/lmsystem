@@ -23,7 +23,8 @@
 
 <body class="flex justify-center h-screen" style="background-image: linear-gradient(90deg, #0f172a 0%, #20307e 86%)">
     <!-- Modal for viewProfile start -->
-    <div id="viewprofilemodal" class="fixed inset-0 bg-slate-400 bg-opacity-75 flex items-center justify-center hidden">
+                               class="hidden fixed inset-0 bg-slate-400 bg-opacity-75 flex items-center justify-center"
+    <div id="viewprofilemodal" class="hidden fixed inset-0  backdrop-blur flex items-center justify-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="bg-slate-900 rounded-lg text-white p-8 rounded shadow-lg w-11/12 md:w-1/2">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
@@ -145,7 +146,7 @@
     <!-- Modal for viewProfile end -->
 
     <!-- model for add book model start -->
-    <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div id="add-book-modal" tabindex="-1" aria-hidden="true" class="hidden backdrop-blur overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-2xl max-h-full">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -169,25 +170,36 @@
                             </label>
                         </div>
 
-                    
+                        <!-- Author Name -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="author" id="author"  placeholder=" " required  class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                            <label for="author"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Author Name
+                            </label>
+                        </div>
+
                         <!-- ISBN NO. -->
                         <div class="relative z-0 w-full mb-6 group">
                             <input type="number" name="isbn" id="isbn" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label for="isbn" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">ISBN no.</label>
                         </div>
                     
-                        <!-- title -->
+                        <!-- Book Edition -->
                         <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="title" id="title" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="title" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8"> Book Title</label>
-                        </div>
+                            <input placeholder="Select Book Edition" list="editionList" name="edition" id="edition" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            <datalist id="editionList">
+                                <c:forEach var="edition" items="${editions}">
+                                    <option value="${edition.name}"> 
+                                </c:forEach>
+                            </datalist>
+                        </div> 
 
                         <!-- book categories -->
                         <div class="relative z-0 w-full mb-6 group">
-                            <input placeholder="Select Book Category" list="category" name="category_id" id="category_id" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
-                            <datalist id="category">
+                            <input placeholder="Select Book Category" list="categoryList" name="category" id="category" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            <datalist id="categoryList">
                                 <c:forEach var="category" items="${categories}">
-                                    <option value="${city.city}(${city.state.state})"> 
+                                    <option value="${category.name}"> 
                                 </c:forEach>
                             </datalist>
                         </div>
@@ -204,30 +216,78 @@
                 </div>
           </div>
       </div>
-  </div>
-  
+    </div>
     <!-- model for add  book  model end -->
 
 
     <div class="container">
 
+        <!-- navbar -->
         <div class="flex-row">
             <div class="col">
-                <%@ include file="publisher_navbar.jsp"%>
+                <nav class="bg-white dark:bg-gray-900 fixed h-20 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+                    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                        <a href="publisher_dashboard.jsp" class="flex items-center space-x-3 rtl:space-x-reverse">
+                            <img src="static/media/images/reading-book.png" class="h-12" alt="logo">
+                            <span class="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">${user.name}</span>
+                        </a>
+                        
+                        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                            <!-- viewProfile logo -->
+                            <button id="viewProfile" class="rounded-full bg-white border-white">
+                                <c:choose>
+                                    <c:when test="${empty user.profilePic}">
+                                        <img src="static/media/images/dpp.png" class="h-12 w-12 rounded-full">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="profilePic.do" class="h-12 w-12 rounded-full">
+                                    </c:otherwise>
+                                </c:choose>
+                            </button>
+
+                            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false" id="navbar-toggle">
+                                <span class="sr-only">Open main menu</span>
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                            <ul class="flex flex-col p-4 md:p-0 mt-4 text-2xl border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                                <li>
+                                    <a href="#" class="block py-2 px-3 rounded md:hover:text-orng md:p-0 dark:text-white md:dark:hover:bg-transparent dark:border-gray-700">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block py-2 px-3 rounded md:hover:text-orng md:p-0 dark:text-white md:dark:hover:bg-transparent dark:border-gray-700">Books</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block py-2 px-3 rounded md:hover:text-orng md:p-0 dark:text-white md:dark:hover:bg-transparent dark:border-gray-700">Libraries</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block py-2 px-3 rounded md:hover:text-orng md:p-0 dark:text-white md:dark:hover:bg-transparent dark:border-gray-700">Help</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
         </div>
+        <!-- navbar -->
+
         <br><br><br><br>
 
+        <!-- heading -->
         <div class="flex-row">
             <div class="w-full flex items-center justify-center ">
                 <div class=" h-full flex flex-col items-center justify-center w-full">
                     <div id="wtl" class="responsive-text text-white text-center w-full  flex-grow">
-                        <p class="xl:text-4xl font-bold">TRANDING BOOKS</p>
+                        <p class="xl:text-4xl font-bold">TRENDING BOOKS</p>
                         <hr class=" sm:w-52 md:w-1/2 border-t-4  mx-auto border-orng">
                     </div>
                 </div>
             </div>
         </div>
+        <!-- heading -->
         
         <!-- Swiper Carousel -->
         <div class="swiper mySwiper">
@@ -621,8 +681,8 @@
         </div>
 
 
-        <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-            Toggle modal
+        <button data-modal-target="add-book-modal" data-modal-toggle="add-book-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+            Add New book
         </button>
 
 
@@ -699,5 +759,24 @@
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
         },
+    });
+</script>
+
+
+<!-- //////////////////////////////restriction for user manual input in category////////////////////////////// -->
+<!-- 
+jab form submit hoga tab event listener input value aur options ko check karega.
+agar category ki input value datalist ke option me hai to form sublit ho jayega, 
+yadi category ki input value datalist ke option me nahi hai to form sublit nahi,or ek alert msg dikhaya jayega
+ -->
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const input = document.getElementById('category').value;
+        const options = [...document.getElementById('categoryList').options].map(option => option.value);
+
+        if (!options.includes(input)) {
+            event.preventDefault();
+            alert('Please select a valid category from the List.');
+        }
     });
 </script>

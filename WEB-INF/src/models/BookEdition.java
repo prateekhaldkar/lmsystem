@@ -15,6 +15,10 @@ public class BookEdition {
   //constructor
   public BookEdition() {}
 
+  public BookEdition(String ){
+
+  }
+
   //GET/SET
 
   public Integer getBookEditionId() {

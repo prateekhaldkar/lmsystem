@@ -657,7 +657,40 @@ create table categories(
     category_id int not null auto_increment primary key,
     name varchar(50) not null
 );
-INSERT INTO categories (name) VALUES ('General Narrative'),('Mystery'),('Horror'),('Fantasy'),('Science Narrative'),('Historical Narrative'),('Children’s Narrative'),('Biography & Autobiography'),('Health & Wellness'),('Travel'),('True Crime'),('History'),('Science'),('Philosophy'),('Religion & Spirituality'),('Cooking'),('Art & Photography'),('Business & Economics'),('Politics'),('Technology'),('Graphic Novels'),('Poetry'),('Drama'),('Essays'),('Short Stories'),('Mathematics'),('physics'),('Chemistry'),('Biology'),('Geography'),('Language Arts'),('Computer Science'),('Economics');
+INSERT INTO categories (category_id,name) VALUES 
+(1,'General Narrative'),
+(2,'Mystery'),
+(3,'Horror'),
+(4,'Fantasy'),
+(5,'Science Narrative'),
+(6,'Historical Narrative'),
+(7,'Children’s Narrative'),
+(8,'Biography & Autobiography'),
+(9,'Health & Wellness'),
+(10,'Travel'),
+(11,'True Crime'),
+(12,'History'),
+(13,'Science'),
+(14,'Philosophy'),
+(15,'Religion & Spirituality'),
+(16,'Cooking'),
+(17,'Art & Photography'),
+(18,'Business & Economics'),
+(19,'Politics'),
+(20,'Technology'),
+(21,'Graphic Novels'),
+(22,'Poetry'),
+(23,'Drama'),
+(24,'Essays'),
+(25,'Short Stories'),
+(26,'Mathematics'),
+(27,'physics'),
+(28,'Chemistry'),
+(29,'Biology'),
+(30,'Geography'),
+(31,'Language Arts'),
+(32,'Computer Science'),
+(33,'Economics');
 
 create table gender(
     gender_id int not null auto_increment primary key,

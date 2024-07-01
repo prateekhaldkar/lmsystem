@@ -6,7 +6,7 @@ public class Book {
   private Integer bookId;
   private String isbnNo;
   private String title;
-  private Categorie category;
+  private Category category;
   private Publisher publisher;
 
   //constructor
@@ -38,11 +38,11 @@ public class Book {
     this.title = title;
   }
 
-  public Categorie getCategory() {
+  public Category getCategory() {
     return category;
   }
 
-  public void setCategory(Categorie category) {
+  public void setCategory(Category category) {
     this.category = category;
   }
 
