@@ -769,12 +769,11 @@ create table publisher(
 );
 create table books(
     book_id int not null auto_increment primary key,
-    isbn_no varchar(50) not null,
     title varchar(100) not null,
     category_id int not null,
-    publisher_id int not null,
+    -- publisher_id int not null,
     constraint fk_books_category foreign key (category_id) references categories(category_id),
-    constraint fk_books_publisher foreign key (publisher_id) references publisher(publisher_id)
+    -- constraint fk_books_publisher foreign key (publisher_id) references publisher(publisher_id)
 );
 create table book_editions(
     book_edition_id int not null auto_increment primary key,
@@ -783,6 +782,7 @@ create table book_editions(
     published_on date not null,
     price int not null,
     details varchar(2000) not null,
+    isbn_no varchar(50) not null,
     constraint fk_books_edition_book foreign key (book_id) references books(book_id)
 );
 create table librarians(
@@ -809,9 +809,7 @@ create table library_books(
 create table book_author(
     book_author_id int not null auto_increment primary key,
     book_edition_id int not null,
-    user_id int not null,
-    constraint fk_books_author_book_edition foreign key (book_edition_id) references book_editions(book_edition_id),
-    constraint fk_books_author_user foreign key (user_id) references users(user_id)
+    constraint fk_books_author_book_edition foreign key (book_edition_id) references book_editions(book_edition_id)
 );
 create table membership(
     membership_id int not null auto_increment primary key,

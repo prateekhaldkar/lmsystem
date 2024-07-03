@@ -40,5 +40,13 @@
   <listener>
     <listener-class>listeners.AppListenerImpl</listener-class>
   </listener>
+
+
+  <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
   
 </web-app>

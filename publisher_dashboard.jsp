@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +26,6 @@
 
 <body class="flex justify-center h-screen" style="background-image: linear-gradient(90deg, #0f172a 0%, #20307e 86%)">
     <!-- Modal for viewProfile start -->
-                               class="hidden fixed inset-0 bg-slate-400 bg-opacity-75 flex items-center justify-center"
     <div id="viewprofilemodal" class="hidden fixed inset-0  backdrop-blur flex items-center justify-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="bg-slate-900 rounded-lg text-white p-8 rounded shadow-lg w-11/12 md:w-1/2">
             <div class="flex items-center">
@@ -92,7 +94,7 @@
                                     City :
                                 </th>
                                 <td class="">
-                                    ${user.city}
+                                    ${user.city.city}(${fn:toLowerCase(user.city.state.state)})
                                 </td>
                             </tr>
                             <tr class="  ">
@@ -100,7 +102,7 @@
                                     Details :
                                 </th>
                                 <td class="">
-                                    ${publishers.details}
+                                    ${user.details}
                                 </td>
                             </tr>
                             <tr class="  ">
@@ -162,38 +164,13 @@
                     <form action="#" method="post" class="max-w-lg mx-auto">
                         <input type="hidden" name="user_type_id" id="user_type_id" value="${param.user_type_id}">
 
-                        <!-- Book Name -->
+                        <!-- Book title -->
                         <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="name" id="name" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="name"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            <input type="text" name="title" id="title" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="title"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
                                 Book Name
                             </label>
                         </div>
-
-                        <!-- Author Name -->
-                        <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="author" id="author"  placeholder=" " required  class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
-                            <label for="author"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                                Author Name
-                            </label>
-                        </div>
-
-                        <!-- ISBN NO. -->
-                        <div class="relative z-0 w-full mb-6 group">
-                            <input type="number" name="isbn" id="isbn" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="isbn" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">ISBN no.</label>
-                        </div>
-                    
-                        <!-- Book Edition -->
-                        <div class="relative z-0 w-full mb-6 group">
-                            <input placeholder="Select Book Edition" list="editionList" name="edition" id="edition" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
-                            <datalist id="editionList">
-                                <c:forEach var="edition" items="${editions}">
-                                    <option value="${edition.name}"> 
-                                </c:forEach>
-                            </datalist>
-                        </div> 
-
                         <!-- book categories -->
                         <div class="relative z-0 w-full mb-6 group">
                             <input placeholder="Select Book Category" list="categoryList" name="category" id="category" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
@@ -203,7 +180,55 @@
                                 </c:forEach>
                             </datalist>
                         </div>
+                        <!-- Book Edition -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input placeholder="Select Book Edition" list="editionList" name="edition" id="edition" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            <datalist id="editionList">
+                                <%
+                                    for(int i=1; i<= 10 ; i++){
+                                        out.println("<option value=\"" + i +"\">");
+                                    }
+                                %>
+                            </datalist>
+                        </div>
+                        <!-- published_on -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="date" name="published_on" id="published_on" placeholder="" required class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+                            <label for="published_on" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Publishment Date
+                            </label>
+                        </div>
+                        <!-- price -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="number" name="price" id="price" placeholder="" required class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+                            <label for="price"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Book Price (in Rs.)
+                            </label>
+                        </div>
+                        <!-- details -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <label for="details" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                About This Bok
+                            </label>
+                            <br>
+                            <textarea name="details" id="details" rows="3" col="30" style="background-image: linear-gradient(90deg, #152056f9 0%, #1b286af9 86%)" class="rounded-lgform-control block py-4 px-0 w-full text-lg text-gray-800 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"></textarea>
+                        </div>
+                        <!-- ISBN NO. -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="number" name="isbn_no" id="isbn_no" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="isbn_no" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                ISBN no.
+                            </label>
+                        </div>
 
+
+                        <!-- Author Name -->
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="author" id="author"  placeholder=" " required  class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                            <label for="author"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Author Name
+                            </label>
+                        </div> 
                     
                         <div class="flex flex-col sm:flex-row gap-4">
                             <button type="submit" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-48 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">

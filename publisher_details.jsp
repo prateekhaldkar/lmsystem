@@ -49,16 +49,13 @@
     <body style="background-image: linear-gradient(90deg, #0f172a 0%, #20307e 86%)">
 
         <div class="container">
-            <!-- <div class="row">
-                <%@ include file="publisher_navbar.jsp" %>
-            </div> -->
-            <br><br><br>
+                       <br><br><br>
 
             <div class="row">
                 <div class="w-full flex items-center justify-center p-4">
                     <div class="m-8 p-4 h-full flex flex-col items-center justify-center w-full">
                         <div id="wtl" class="responsive-text text-white text-center w-full mb-4 flex-grow">
-                            <p class="xl:text-4xl font-bold">FILL PUBLISHER DETAILS</p>
+                            <p class="xl:text-4xl font-bold">FILL YOUR DETAILS</p>
                             <hr class=" sm:w-52 md:w-1/2 border-t-4 my-2 mx-auto border-orng">
                         </div>
                     </div>

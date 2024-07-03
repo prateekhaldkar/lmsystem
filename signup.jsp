@@ -9,13 +9,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LMS</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+        <script
+            src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap" rel="stylesheet">
+        <style>
+            /* Custom styles for the select dropdown options */
+            .custom-select option {
+                @apply bg-blue-500 text-white;
+            }
 
+            .custom-select option:hover {
+                @apply bg-blue-700;
+            }
+        </style>
+
+        
         <style>
             .sono-gfont {
                 font-family: "Sono", monospace;
@@ -69,7 +81,7 @@
                                         PUBLISHER
                                     </c:otherwise>
                                 </c:choose>
-                                    SIGNUP
+                                SIGNUP
                             </p>
                         </div>
                     </div>
@@ -86,7 +98,8 @@
                         <input type="text" name="name" id="name"
                             class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" " required />
-                        <label for="name"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                        <label for="name"
+                            class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
                             <c:choose>
                                 <c:when test="${param.user_type_id==1}">
                                     Candidate
@@ -101,7 +114,7 @@
                                     Publisher
                                 </c:otherwise>
                             </c:choose>
-                                    Name
+                            Name
                         </label>
                     </div>
 
@@ -125,19 +138,22 @@
 
                     <!-- address -->
                     <div class="relative z-0 w-full mb-6 group">
-                        <input type="text" name="address" id="address" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                        <label for="address" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Address</label>
+                        <input type="text" name="address" id="address"
+                            class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="address"
+                            class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Address</label>
                     </div>
 
-                    <!-- city -->
-                    <div class="relative z-0 w-full mb-6 group">
-                        <input placeholder="Select City" list="city" name="city_id" id="city_id" class="block placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
-                        <datalist id="city">
+                    <div class="relative z-0 w-full my-2 group">
+                        <select name="city_id" id="city_id" class="form-select w-full h-12 bg-transparent bg-bodyblue border border-gray-300 text-white text-sm rounded-lg focus:ring-bodyblue focus:border-bodyblue block w-full p-2.5 dark:bg-bodyblue dark:border-bodyblue dark:placeholder-bodyblue dark:text-white dark:focus:ring-bodyblue dark:focus:border-bodyblue">
+                            <option value="">Select City</option>
                             <c:forEach var="city" items="${cities}">
-                                <option value="${city.city}(${city.state.state})"> 
+                                <option value="${city.cityId}">${city.city}(${city.state.state})</option>
                             </c:forEach>
-                        </datalist>
+                        </select>
                     </div>
+                    
 
                     <!-- phone -->
                     <div class="relative z-0 w-full mb-6 group">
@@ -187,7 +203,8 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button type="submit" class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-48 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">
+                        <button type="submit"
+                            class=" text-white bg-orngl hover:bg-orng1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-48 py-2 text-center dark:bg-orng dark:hover:bg-orngl dark:focus:ring-orngl">
                             creat account
                         </button>
                     </div>
@@ -205,6 +222,7 @@
                         orng: '#f36d06',
                         orngl: '#e9a673',
                         clifford: '#da373d',
+                        bodyblue: '#20307e',
                     }
                 }
             }
