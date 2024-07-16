@@ -1,0 +1,84 @@
+<!-- Book Edition -->
+<div class="relative z-0 w-full mb-6 group">
+    <label for="edition"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+        Book Edition
+    </label>
+    <input placeholder="" list="editionList" name="edition" id="edition" class="block mt-4 placeholder-slate-50 py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+    <datalist id="editionList">
+        <%
+            for(int i=1; i<= 10 ; i++){
+                out.println("<option value=\"" + i +"\">");
+            }
+        %>
+    </datalist>
+</div>
+ <!-- select Author -->
+ <div class="relative z-0 w-full my-2 group">
+    <label for="author_id"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+        Book Author
+    </label>
+    <select name="author_id" id="author_id" required class="mt-4 focus:border-orng form-select w-full h-12 bg-transparent appearance-none border border-orngl text-white text-sm rounded-lg dark:text-white" onchange="handleAuthorChange()">
+            <option class="bg-gray-700">Select Author</option>
+        <c:forEach var="author" items="${authors}">
+            <option class="bg-gray-700" value="${author.authorId}">${author.name}(${author.place})</option>
+        </c:forEach>
+            <option class="bg-gray-700">OTHER</option>
+    </select>
+</div>
+<!-- new auther -->
+<div id="otherAuthorInput" class="hidden flex space-x-4 mb-6">
+    <div class="relative z-0 w-1/2 group">
+        <input type="text" name="author_name" id="author_name" placeholder=" "  class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+        <label for="author_name" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+            Author Name
+        </label>
+    </div>
+    <div class="relative z-0 w-1/2 group">
+        <input type="text" name="place" id="place" placeholder=" "  class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+        <label for="place" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+            Place
+        </label>
+    </div>
+</div>
+<!-- ISBN NO. -->
+<div class="relative z-0 w-full mb-6 group">
+    <input type="number" name="isbn_no" id="isbn_no" class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+    <label for="isbn_no" class="mt-2 peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+        ISBN no.
+    </label>
+</div>
+<!-- published_on -->
+<div class="relative z-0 w-full mb-6 group">
+    <input type="date" name="published_on" id="published_on" placeholder="" required class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+    <label for="published_on" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+        Publishment Date
+    </label>
+</div>
+<!-- price -->
+<div class="relative z-0 w-full mb-6 group">
+    <input type="number" name="price" id="price" placeholder="" required class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+    <label for="price"class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+        Book Price (in Rs.)
+    </label>
+</div>
+<!-- details -->
+<div class="relative z-0 w-full mb-6 group">
+    <label for="details" class=" peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+        About This Bok
+    </label>
+    <br>
+    <textarea name="details" id="details" rows="1" col="30" class="bg-transparent rounded-lgform-control block py-4 px-0 w-full text-lg text-gray-800 border-0 border-b-2 border-orngl appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-orng peer"></textarea>
+</div>
+
+
+<script>
+    function handleAuthorChange() {
+        var select = document.getElementById("author_id");
+        var otherAuthorInput = document.getElementById("otherAuthorInput");
+        if (select.value === "OTHER") {
+            otherAuthorInput.classList.remove("hidden");
+        } else {
+            otherAuthorInput.classList.add("hidden");
+        }
+    }
+</script>

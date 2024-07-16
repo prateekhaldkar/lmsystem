@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+
+</head>
+
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Select Category</h2>
+            <div>
+                <select id="categorySelect" class="p-2 border rounded">
+                    <option value="">Select a category...</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trigger button to open the modal -->
+    <button id="openModalBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Open Modal
+    </button>
+</body>
+
+</html>
+
+
+
+<!-- HTML structure for the modal -->
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('myModal');
+        const modalBtn = document.getElementById('openModalBtn');
+        const spanClose = document.getElementsByClassName('close')[0];
+
+        modalBtn.addEventListener('click', function () {
+            modal.style.display = 'block';
+            fetchCategories(); // Fetch categories when modal opens
+        });
+
+        spanClose.onclick = function () {
+            modal.style.display = 'none';
+        };
+
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+
+        function fetchCategories() {
+            fetch('your_api_endpoint_to_fetch_categories')
+                .then(response => response.json())
+                .then(categories => {
+                    const select = document.getElementById('categorySelect');
+                    select.innerHTML = ''; // Clear previous options
+
+                    categories.forEach(category => {
+                        const option = document.createElement('option');
+                        option.value = category.category_id;
+                        option.textContent = category.name;
+                        select.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching categories:', error));
+        }
+    });
+</script>

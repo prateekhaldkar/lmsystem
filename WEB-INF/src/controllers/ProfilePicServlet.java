@@ -26,11 +26,9 @@ public class ProfilePicServlet extends HttpServlet {
         if(user != null) {
             
             String absPath = context.getRealPath("/WEB-INF/uploads/"+UserType.types[user.getUserType().getUserTypeId()-1].toLowerCase()+"/"+user.getEmail()+"/profilePic");
-            System.out.println(absPath);
             
             File file = new File(absPath);
             String[] list = file.list();
-            System.out.println(absPath+"\\"+list[0]);
             InputStream is = context.getResourceAsStream("/WEB-INF/uploads/"+UserType.types[user.getUserType().getUserTypeId()-1].toLowerCase()+"/"+user.getEmail()+"/profilePic/"+list[0]);
             
             OutputStream os = response.getOutputStream();

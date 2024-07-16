@@ -12,6 +12,10 @@ public class Publisher extends User {
   //constructor
   public Publisher() {}
 
+  public Publisher(Integer publisherId){
+    this.publisherId = publisherId;
+  }
+
   public Publisher(String email, String password, UserType userType) {
     super(email, password, userType);
   }

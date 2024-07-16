@@ -144,12 +144,12 @@
                         <label for="address"
                             class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Address</label>
                     </div>
-
-                    <div class="relative z-0 w-full my-2 group">
-                        <select name="city_id" id="city_id" class="form-select w-full h-12 bg-transparent bg-bodyblue border border-gray-300 text-white text-sm rounded-lg focus:ring-bodyblue focus:border-bodyblue block w-full p-2.5 dark:bg-bodyblue dark:border-bodyblue dark:placeholder-bodyblue dark:text-white dark:focus:ring-bodyblue dark:focus:border-bodyblue">
-                            <option value="">Select City</option>
+                    <!-- city -->
+                    <div class=" relative z-0 w-full my-2 group">
+                        <select name="city_id" id="city_id" class="focus:border-orng form-select w-full h-12 bg-transparent appearance-none border border-orngl text-white text-sm rounded-lg dark:text-white ">
+                            <option class="bg-blue-950">Select City</option>
                             <c:forEach var="city" items="${cities}">
-                                <option value="${city.cityId}">${city.city}(${city.state.state})</option>
+                                <option class="bg-blue-950" value="${city.cityId}">${city.city}(${city.state.state})</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -222,8 +222,10 @@
                         orng: '#f36d06',
                         orngl: '#e9a673',
                         clifford: '#da373d',
-                        bodyblue: '#20307e',
-                    }
+                    },
+                    backgroundImage: {
+                    'bodyblue': 'linear-gradient(90deg, #0f172a 0%, #20307e 100%)',
+                    },
                 }
             }
         }

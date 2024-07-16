@@ -54,7 +54,6 @@ public class User {
         PreparedStatement ps = con.prepareStatement(query);
 
         ps.setDate(1, dob);
-        System.out.println("-"+profilePic+"-");
         ps.setString(2, profilePic);
         ps.setInt(3, Status.ACTIVE);
         ps.setInt(4, userId);

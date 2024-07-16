@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import models.Publisher;
+import models.Book;
 
 @WebServlet("/publisher_dashboard.do")
 public class PublisherDashboardServlet extends HttpServlet{
@@ -20,5 +21,14 @@ public class PublisherDashboardServlet extends HttpServlet{
         Publisher publisher = (Publisher)session.getAttribute("user");
 
         String nextPage = "login.do";
+        
+        // if(publisher != null) {
+        //     ArrayList<Book> books = Book.collectAllBooks(publisher);
+        //     request.setAttribute("record_size", books.size());
+        //     request.setAttribute("books", books);
+        //     nextPage = "publisher_dashboard.jsp";
+        // }
+
+        // request.getRequestDispatcher(nextPage).forward(request, response);
     }
 }

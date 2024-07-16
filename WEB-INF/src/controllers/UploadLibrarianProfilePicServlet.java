@@ -33,7 +33,6 @@ public class UploadLibrarianProfilePicServlet extends HttpServlet {
                     List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                     FileItem item = items.get(1);
     
-                    System.out.println(item.getName());
                     String fileName = "profilePic."+item.getName().split("\\.")[1];
                     librarian.setProfilePic(fileName);
 

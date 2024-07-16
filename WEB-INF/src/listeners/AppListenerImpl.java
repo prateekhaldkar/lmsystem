@@ -6,6 +6,7 @@ import javax.servlet.ServletContextListener;
 
 import models.City;
 import models.Category;
+import models.Author;
 import utils.EmailSender;
 
 import java.util.ArrayList;
@@ -28,8 +29,10 @@ public class AppListenerImpl implements ServletContextListener {
         
         ArrayList<Category> categories = Category.collectAllCategories();
         context.setAttribute("categories", categories);
-
-    
+        
+        ArrayList<Author> authors = Author.collectAllAuthors();
+        context.setAttribute("authors", authors); 
+        
     }
 
     public void contextDestroyed(ServletContextEvent ev) {

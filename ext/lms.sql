@@ -753,6 +753,7 @@ create table libraries(
     late_fine int null,
     deposit_amount int null,
     constraint fk_libraries_user foreign key (user_id) references users(user_id) 
+    constraint fk_books_publishers foreign key (publisher_id) references publisher(publisher_id) 
 );
 create table library_pics(
     library_pic_id int not null auto_increment primary key,
@@ -771,9 +772,9 @@ create table books(
     book_id int not null auto_increment primary key,
     title varchar(100) not null,
     category_id int not null,
-    -- publisher_id int not null,
+    publisher_id int not null,
     constraint fk_books_category foreign key (category_id) references categories(category_id),
-    -- constraint fk_books_publisher foreign key (publisher_id) references publisher(publisher_id)
+    constraint fk_books_publisher foreign key (publisher_id) references publisher(publisher_id)
 );
 create table book_editions(
     book_edition_id int not null auto_increment primary key,
@@ -806,10 +807,11 @@ create table library_books(
     constraint fk_library_books_libraries foreign key (library_id) references libraries(library_id),
     constraint fk_library_books_book_edition_id foreign key (book_edition_id) references book_editions(book_edition_id)
 );
-create table book_author(
-    book_author_id int not null auto_increment primary key,
-    book_edition_id int not null,
-    constraint fk_books_author_book_edition foreign key (book_edition_id) references book_editions(book_edition_id)
+create table authors(
+    author_id int not null auto_increment primary key,
+    name varchar(50) not null,
+    place varchar(50) not null
+
 );
 create table membership(
     membership_id int not null auto_increment primary key,
