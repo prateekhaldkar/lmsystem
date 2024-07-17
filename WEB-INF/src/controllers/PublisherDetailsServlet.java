@@ -34,6 +34,5 @@ public class PublisherDetailsServlet extends HttpServlet {
 
         response.sendRedirect("publisher_dashboard.jsp");
 
-
     }
 }

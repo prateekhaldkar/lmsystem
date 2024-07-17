@@ -845,6 +845,7 @@ SELECT * FROM cities;
 select city_id,city,c.state_id,state from cities as c inner join states as s where c.state_id=s.state_id;
 ==============================================================================================================
 
+ UPDATE book_editions SET edition='2' WHERE book_edition_id='4';
 UPDATE status SET status_id='1' WHERE status='INACTIVE';
 
 UPDATE status SET type = 'Active' WHERE status_id = 1;

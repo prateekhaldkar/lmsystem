@@ -34,14 +34,15 @@ public class BookEditionServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request,HttpServletResponse response)throws IOException,ServletException{
+
         Integer bookId = Integer.parseInt(request.getParameter("book_id"));
-
+        String bookTitle =request.getParameter("book_title");
         BookEdition bookEdition = new BookEdition(new Book(bookId));
-
+        System.out.println(bookEdition+"++++++++++++");
         ArrayList<BookEdition> editions = bookEdition.collectAllEditions();
 
         request.setAttribute("book_editions",editions);
 
-        request.getRequestDispatcher("book_edition.jsp?book_id="+bookId).forward(request, response);
+        request.getRequestDispatcher("book_edition.jsp?book_id="+bookId+ "&book_title="+bookTitle).forward(request, response);
     }
 }

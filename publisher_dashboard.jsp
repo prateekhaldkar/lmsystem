@@ -21,6 +21,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
 
 </head>
 
@@ -283,19 +286,6 @@
 
         <br><br><br><br>
 
-        <!-- heading -->
-        <div class="flex-row">
-            <div class="w-full flex items-center justify-center ">
-                <div class=" h-full flex flex-col items-center justify-center w-full">
-                    <div id="wtl" class="responsive-text text-white text-center w-full  flex-grow">
-                        <p class="xl:text-4xl font-bold">All BOOKS</p>
-                        <hr class=" sm:w-52 md:w-1/2 border-t-4  mx-auto border-orng">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- heading -->
-
         <!-- Add New book -->
         <button data-modal-target="add-book-modal" data-modal-toggle="add-book-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
             Add New book
@@ -308,6 +298,19 @@
             </button>
         </a>
 
+        <!-- heading -->
+        <div class="flex-row">
+            <div class="w-full flex items-center justify-center ">
+                <div class=" h-full flex flex-col items-center justify-center w-full">
+                    <div id="wtl" class="responsive-text text-white text-center w-full  flex-grow">
+                        <p class="xl:text-4xl font-bold">All BOOKS</p>
+                        <hr class=" sm:w-52 md:w-1/2 border-t-4  mx-auto border-orng">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+         
         <!-- show all books (collection) -->
         <div class="container mx-auto">
             <c:forEach var="book" items="${books}" varStatus="n">
@@ -317,8 +320,8 @@
                 
                 <div class="w-1/5 px-4 mb-8">
                     <div class="shadow-md rounded-md p-4">
-                        <a href="book_edition.do?book_id=${book.bookId}">
-                            <div id="${book.bookId}" class="w-full max-w-xs bg-white border border-gray-900 rounded-lg shadow dark:bg-gray-900 dark:border-gray-900">
+                        <div id="${book.bookId}" class="w-full max-w-xs bg-white border border-gray-900 rounded-lg shadow dark:bg-gray-900 dark:border-gray-900">
+                            <a href="book_edition.do?book_id=${book.bookId}&book_title=${book.title}">
                                 <c:choose>
                                     <c:when test="${empty book.bookPic}">
                                         <img src="static/media/images/bookcover/dummybook.png" class="pt-6 card-img-top object-contain h-48 w-full">
@@ -332,7 +335,6 @@
                                     <p class="text-lg font-medium tracking-tight text-gray-900 dark:text-white">${book.category.name}</p>
                                     <div class="flex items-center mt-2.5 mb-5">
                                         <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                                            <!-- Star SVGs -->
                                             <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
                                             <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
                                             <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20"><path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/></svg>
@@ -342,8 +344,16 @@
                                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
                                     </div>
                                 </div>
+                            </a>
+                            <div class="px-5 pb-5 flex justify-center justify-between">
+                                <a href="" class="text-center">
+                                    <img src="static/media/images/addimage.png" class="w-6" alt="Add">
+                                </a>
+                                <a href="#" class="text-center">
+                                    <img src="static/media/images/delete.png" class="w-6" alt="Delete">
+                                </a>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
                 

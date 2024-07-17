@@ -48,7 +48,14 @@ public class SignupServlet extends HttpServlet {
             EmailSender.sendEmail(email, subject, emailContent);
             
             String userPath = context.getRealPath("/WEB-INF/uploads/" + UserType.types[userTypeId-1].toLowerCase());
+            
             File file = new File(userPath, email + "/profilePic");
+            if(userTypeId == 4){
+                File file1 = new File(userPath, email + "/bookPic");
+                File file2 = new File(userPath, email + "/bookEditionPic");
+                file1.mkdirs();
+                file2.mkdirs();
+            }
             file.mkdirs();
         }
         

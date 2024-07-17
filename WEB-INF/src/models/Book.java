@@ -76,6 +76,26 @@ public class Book {
   }
 
 
+  public void saveBookPic() {
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
+
+        String query = "update books set book_pic=? where book_id=?";
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setString(1, bookPic);
+        ps.setInt(2, bookId);
+        
+        ps.executeUpdate();
+        
+        con.close();
+    }catch(SQLException|ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+  }
+
+
 
   
   public boolean saveBook() {

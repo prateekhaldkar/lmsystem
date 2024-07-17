@@ -53,24 +53,24 @@ public class BookEdition  {
 
 
   public ArrayList<BookEdition> collectAllEditions(){
-        ArrayList<BookEdition> list = new ArrayList<>();
-        try{Class.forName("com.mysql.cj.jdbc.Driver");}catch(ClassNotFoundException e){e.printStackTrace();}
-        
-        String query = "select book_edition_id,edition,published_on,price,details,isbn_no,book_edition_pic from book_editions where book_id=?";
-        
-        try(Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234")){
-            PreparedStatement ps = con.prepareStatement(query);  
-            ps.setInt(1,book.getBookId());
+    ArrayList<BookEdition> list = new ArrayList<>();
+    try{Class.forName("com.mysql.cj.jdbc.Driver");}catch(ClassNotFoundException e){e.printStackTrace();}
+    
+    String query = "select book_edition_id,edition,published_on,price,details,isbn_no,book_edition_pic from book_editions where book_id=?";
+    
+    try(Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234")){
+      PreparedStatement ps = con.prepareStatement(query);  
+      ps.setInt(1,book.getBookId());
 
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                list.add(new BookEdition(rs.getInt(1),rs.getInt(2),rs.getDate(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getString(7)));
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        return list;
+      ResultSet rs = ps.executeQuery();
+      while(rs.next()){
+        list.add(new BookEdition(rs.getInt(1),rs.getInt(2),rs.getDate(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getString(7)));
+      }
+    }catch(SQLException e){
+      e.printStackTrace();
     }
+    return list;
+  }
 
  
 
