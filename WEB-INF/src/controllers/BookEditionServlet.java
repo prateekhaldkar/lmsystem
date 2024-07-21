@@ -38,7 +38,6 @@ public class BookEditionServlet extends HttpServlet {
         Integer bookId = Integer.parseInt(request.getParameter("book_id"));
         String bookTitle =request.getParameter("book_title");
         BookEdition bookEdition = new BookEdition(new Book(bookId));
-        System.out.println(bookEdition+"++++++++++++");
         ArrayList<BookEdition> editions = bookEdition.collectAllEditions();
 
         request.setAttribute("book_editions",editions);

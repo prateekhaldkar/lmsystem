@@ -41,10 +41,11 @@ public class Book {
     this.publisher = publihser;
     this.bookPic = bookPic;
   }
-  public Book(Integer bookId,String title,Category catedory){
+  public Book(Integer bookId,String title,Category catedory, String bookPic){
     this.bookId = bookId;
     this.title = title;
     this.category = catedory;
+    this.bookPic = bookPic;
   }
 
 
@@ -57,7 +58,7 @@ public class Book {
       Class.forName("com.mysql.cj.jdbc.Driver");
       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
             
-      String query = "select book_id,title,c.category_id,name from books as b inner join categories as c where b.category_id=c.category_id and publisher_id = ?";
+      String query = "select book_id,title,c.category_id,name, book_pic from books as b inner join categories as c where b.category_id=c.category_id and publisher_id = ?";
 
       PreparedStatement ps = con.prepareStatement(query);
 
@@ -66,7 +67,7 @@ public class Book {
       ResultSet rs = ps.executeQuery();
 
       while(rs.next()){
-        list.add(new Book(rs.getInt(1),rs.getString(2),new Category(rs.getInt(3),rs.getString(4))));
+        list.add(new Book(rs.getInt(1),rs.getString(2),new Category(rs.getInt(3),rs.getString(4)),rs.getString(5)));
       }
       con.close();
     }catch(SQLException|ClassNotFoundException e){
@@ -125,6 +126,29 @@ public class Book {
 
         return flag;
     }
+
+    public void deleteBook(Book book){
+      try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
+        
+        String query = "DELETE from books WHERE book_id=?";
+        BookEdition e = new BookEdition(book);
+        e.deleteBookEdition(1);
+
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1,bookId);
+
+        ps.executeUpdate();
+        con.close();
+
+      }catch(SQLException | ClassNotFoundException e){
+        e.printStackTrace();
+      }
+
+    }
+
+
 
   //GET/SET
 

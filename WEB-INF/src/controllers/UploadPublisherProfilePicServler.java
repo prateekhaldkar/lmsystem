@@ -31,6 +31,7 @@ public class UploadPublisherProfilePicServler extends HttpServlet {
             if(ServletFileUpload.isMultipartContent(request)) {
                 try {
                     List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+                    
                     FileItem item = items.get(1);
                     
                     String fileName = "profilePic."+item.getName().split("\\.")[1];

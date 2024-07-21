@@ -99,7 +99,29 @@ public class BookEdition  {
     }
 
 
+    public void deleteBookEdition( Integer num){
+      try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
+        
+        PreparedStatement ps;
+        if(num == 1){
+          String query = "DELETE from book_editions WHERE book_id=?";
+          ps = con.prepareStatement(query);
+          ps.setInt(1,book.getBookId());
+        }else{
+          String query = "DELETE from book_editions WHERE book_edition_id=?";
+          ps = con.prepareStatement(query);
+          ps.setInt(1,bookEditionId);
+        }
+        ps.executeUpdate();
+        con.close();
 
+      }catch(SQLException | ClassNotFoundException e ){
+        e.printStackTrace();
+      }
+
+    }
 
 
   //GET/SET

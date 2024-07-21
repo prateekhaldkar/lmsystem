@@ -21,8 +21,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
 
 </head>
@@ -164,8 +163,9 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
-                    <form action="book.do" method="post" class="max-w-lg mx-auto">
+                    <form action="book.do" method="Get" class="max-w-lg mx-auto">
                         <input type="hidden" name="user_type_id" id="user_type_id" value="${param.user_type_id}">
+                        <input type="hidden" name="num" id="num" value="${num=2}">
                         <!-- Book title -->
                         <div class="relative z-0 w-full mb-6 group">
                             <input type="text" name="title" id="title" placeholder=" " required class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
@@ -231,6 +231,31 @@
     </div>
     <!-- model for add  book  model end -->
 
+    <!-- model for dropzone end -->
+    <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center  p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Upload Book Image
+                    </h3>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 space-y-4">
+                        <form action="book_pic.do" id="bookPic" style="background-image:url(static/media/images/bookcover/dummybook.png); background-size: cover; height: 50vh;  align-items: center; justify-content: center;" class="dropzone bg-transparent border-none rounded-xl max-w-lg mx-auto">
+                            <input type="hidden" name="book_id" id="book_id">
+                        </form>
+                        <div class="text-white text-center w-full mb-4 flex-grow" style="display: flex; justify-content: flex-end;">
+                            <button type="button" id="upload_btn" class="text-white bg-orngl1 hover:bg-orngl1 focus:ring-2 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 text-center  dark:focus:ring-orng" >Upload</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- model for dropzone end -->
+
     <div class="container">
         <!-- navbar -->
         <div class="flex-row">
@@ -291,12 +316,12 @@
             Add New book
         </button>
 
-        <!-- show book -->
+        <!-- show book
         <a href="book.do">
             <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                 show book
             </button>
-        </a>
+        </a> -->
 
         <!-- heading -->
         <div class="flex-row">
@@ -317,20 +342,19 @@
                 <c:if test="${(n.count-1) % 5 == 0}">
                     <div class="flex flex-wrap -mx-4">
                 </c:if>
-                
+               
                 <div class="w-1/5 px-4 mb-8">
                     <div class="shadow-md rounded-md p-4">
                         <div class="w-full max-w-xs bg-white border border-gray-900 rounded-lg shadow dark:bg-gray-900 dark:border-gray-900">
                             <c:choose>
                                 <c:when test="${empty book.bookPic}">
-
-                                <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">
-                                    <img src="static/media/images/bookcover/dummybook.png" class=" card-img-top object-contain  w-full">
-                                </button>
-                                    
+                                    <button  type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center  ">
+                                        <img id="${book.bookId}" src="static/media/images/bookcover/dummybook.png" class="kaka card-img-top object-contain  w-full">
+                                    </button>
                                 </c:when>
+                                
                                 <c:otherwise>
-                                    <%-- <img src="course_pic.do?course_id=${course.courseId}" class="card-img-top object-contain h-48 w-full"> --%>
+                                    <img src="book_pic.do?book_id=${book.bookId}&path=${book.bookPic}" class="card-img-top object-contain h-48 w-full">
                                 </c:otherwise>
                             </c:choose>
                             <div class="px-5 pb-5">
@@ -355,7 +379,7 @@
                                         </span>
                                     </button>
                                 </a>
-                                <a href="#" class="">
+                                <a href="delete_book.do?book_id=${book.bookId}" class="">
                                     <img src="static/media/images/delete.png" class="w-8 pt-2" alt="Delete">
                                 </a>
                             </div>
@@ -373,9 +397,40 @@
 
     </div>
 
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>
+
+<script>
+
+    Dropzone.autoDiscover = false;
+
+    const dropzone = new Dropzone('#bookPic', {
+        maxFiles: 1,
+        maxFilesize: 1,
+        acceptedFiles: '.png,.jpg',
+        autoProcessQueue: false
+    });
+
+    const upload_btn = document.querySelector('#upload_btn');
+    
+    upload_btn.addEventListener('click', () => {
+        dropzone.processQueue();
+    });
+    
+</script>
+
+<script>
+    const bookid = document.querySelector('#book_id');
+    const imeges = document.querySelectorAll('.kaka');
+
+    imeges.forEach((image)=>{
+        image.addEventListener('click',()=>{
+            bookid.value = image.id;
+        });
+    });
+</script>
 
 
 <script>
