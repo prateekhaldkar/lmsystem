@@ -163,7 +163,7 @@
 
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
-                    <form action="book_edition.do" method="post" class="max-w-lg mx-auto">
+                    <form action="book_edition.do?title=${param.book_title}" method="post" class="max-w-lg mx-auto">
                         <input type="hidden" name="book_id" id="book_id" value="${param.book_id}">
                         
                         <div class="relative z-0 w-full mb-6 group">
@@ -338,7 +338,7 @@
                                     <a href="#" class="text-center">
                                         <img src="static/media/images/edit.png" class="w-6" alt="Edit">
                                     </a>
-                                    <a href="#" class="text-center">
+                                    <a href="delete_book_edition.do?book_id=${param.book_id}&title=${param.book_title}&book_edition_id=${bookedition.bookEditionId}" class="text-center">
                                         <img src="static/media/images/delete.png" class="w-6" alt="Delete">
                                     </a>
                                 </div>

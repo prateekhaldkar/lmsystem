@@ -21,6 +21,7 @@ public class DeleteBookServlet extends HttpServlet {
 
         book.deleteBook(book);  
         
-        request.getRequestDispatcher("book.do?num=1").forward(request, response);
+        // request.getRequestDispatcher("book.do?num=1").forward(request, response);
+        response.sendRedirect("book.do?num=1");
     }
 }

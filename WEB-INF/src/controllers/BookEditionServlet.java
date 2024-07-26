@@ -20,6 +20,8 @@ import javax.servlet.annotation.WebServlet;
 public class BookEditionServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,HttpServletResponse response)throws IOException,ServletException{
         
+        String title = request.getParameter("title");
+        
         Integer bookId = Integer.parseInt(request.getParameter("book_id"));
         Integer edition = Integer.parseInt(request.getParameter("edition"));
         Date published_on = Date.valueOf(request.getParameter("published_on"));
@@ -30,7 +32,7 @@ public class BookEditionServlet extends HttpServlet {
         BookEdition bookEdition = new BookEdition(new Book(bookId),edition,published_on,price,details,isbnNo);
         bookEdition.saveBookEdition();
         
-        request.getRequestDispatcher("book_edition.jsp").forward(request, response);;
+        response.sendRedirect("book_edition.do?book_id="+bookId+"&book_title="+title);
     }
 
     public void doGet(HttpServletRequest request,HttpServletResponse response)throws IOException,ServletException{
