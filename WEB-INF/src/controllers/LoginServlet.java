@@ -75,7 +75,7 @@ public class LoginServlet extends HttpServlet{
                 int statusId = publisher.getStatus().getStatusId();
                 if(statusId == Status.ACTIVE){
                     session.setAttribute("user", publisher);
-                    nextPage = "book.do";
+                    nextPage = "book.do?num=1";
                 }else if(statusId == Status.INACTIVE){
                     String message = MessageTemplate.getIncompleteEmailVerificationMessage(email);
                     nextPage = "message.jsp?img=static/media/images/IncompleteEmailVerification.png&color=text-green-200&message="+message;
