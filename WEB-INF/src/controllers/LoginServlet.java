@@ -62,6 +62,7 @@ public class LoginServlet extends HttpServlet{
                 } else if(statusId == Status.BLOCKED) {       
                 }
             }
+            
         }else if(userTypeId == 4){
             Publisher publisher = new Publisher(email, password, new UserType(userTypeId));
             int result = publisher.login();

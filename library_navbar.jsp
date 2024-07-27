@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<nav class="bg-white dark:bg-gray-900 fixed h-20 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+<nav class="bg-white dark:bg-slate-900 fixed h-20 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="library_dashboard.jsp" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="static/media/images/reading-book.png" class="h-12" alt="logo">
