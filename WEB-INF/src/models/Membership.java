@@ -1,8 +1,11 @@
 package models;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-public class Membership {
+public class Membership extends User{
 
   //properties
   private Integer membershipId;
@@ -14,6 +17,20 @@ public class Membership {
 
   //constructor
   public Membership() {}
+
+  public Membership(String email, String password, UserType userType){
+    super(email, password, userType);
+  }
+
+  // Methods
+
+  public int login(){
+    int result = super.login();
+    return result;
+  }
+
+
+
 
   //GET/SET
   public Integer getMembershipId() {

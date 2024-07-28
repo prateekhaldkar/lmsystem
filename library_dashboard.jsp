@@ -159,15 +159,15 @@
         <div class="mb-4 border-b border-gray-900 dark:border-gray-700">
             <ul class="flex flex-wrap -mb-px text-lg font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                 <li class="me-2" role="presentation">
-                    <button class="inline-flex items-center p-4 border-b-2 rounded-t-lg" id="t1-tab" data-tabs-target="#t1" type="button" role="tab" aria-controls="t1" aria-selected="false">
-                        <img src="static/media/images/find.png" class="w-6 mr-2" alt="find">
-                        t1
+                    <button class="inline-flex items-center p-4 border-b-2 rounded-t-lg" id="home-tab" data-tabs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="false">
+                        <img src="static/media/images/home.png" class="w-6 mr-2" alt="find">
+                        home
                     </button>
                 </li>
                 <li class="me-2" role="presentation">
-                    <button class="inline-flex items-center p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="t2-tab" data-tabs-target="#t2" type="button" role="tab" aria-controls="t2" aria-selected="false">
-                        <img src="static/media/images/find.png" class="w-6 mr-2" alt="find">
-                        t2
+                    <button class="inline-flex items-center p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="candidate-tab" data-tabs-target="#candidate" type="button" role="tab" aria-controls="candidate" aria-selected="false">
+                        <img src="static/media/images/candidate.png" class="w-6 mr-2" alt="find">
+                        Candidates
                     </button>
                 </li>
                 <li class="me-2" role="presentation">
@@ -188,13 +188,13 @@
         </div>
         
         <div id="default-tab-content">
-            <!-- t1 -->
-            <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="t1" role="tabpanel" aria-labelledby="t1-tab">    
-                t1
+            <!-- Home -->
+            <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="home" role="tabpanel" aria-labelledby="home-tab">    
+                Home
             </div>
-            <!-- t2 -->
-            <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="t2" role="tabpanel" aria-labelledby="t2-tab">
-                t2
+            <!-- candidate -->
+            <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="candidate" role="tabpanel" aria-labelledby="candidate-tab">
+                candidate
             </div>
             <!-- t3 -->
             <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="t3" role="tabpanel" aria-labelledby="t3-tab">

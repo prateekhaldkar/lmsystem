@@ -10,28 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import models.Publisher;
-
-@WebServlet("/publisher_details.do")
-public class PublisherDetailsServlet extends HttpServlet {
+import models.Membership;
+@WebServlet("/candidate_details.do")
+public class MembershipDetailsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
         HttpSession session = request.getSession();
 
-        Publisher publisher = (Publisher)session.getAttribute("publisher");
-
-        String details = request.getParameter("details");
-        String website = request.getParameter("website");
+        Membership membership = (Membership)session.getAttribute("membership");
         
         Date dob = Date.valueOf(request.getParameter("dob"));
 
-        publisher.setDetails(details);
-        publisher.setWebsite(website);
-        publisher.setDob(dob);
+        membership.setDob(dob);
 
-        publisher.saveDetails();
-        publisher.saveDobAndProfilePic();
+        membership.saveDobAndProfilePic();
 
-        response.sendRedirect("publisher_dashboard.jsp");
+        response.sendRedirect("candidate_dashboard.jsp");
 
     }
 }

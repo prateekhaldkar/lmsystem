@@ -821,7 +821,8 @@ create table membership(
     constraint fk_membership_libraries foreign key (library_id) references libraries(library_id),
     joined_on date not null,
     left_on date null,
-    current_dues int not null default 0
+    current_dues int not null default 0,
+    member_id varchar(100) not null
 );
 create table issued_books(
     issued_book_id int not null auto_increment primary key,

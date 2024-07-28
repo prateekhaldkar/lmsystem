@@ -11,8 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import models.User;
 import models.Library;
+import models.Membership;
 import models.Publisher;
 import models.Librarian;
+
 import models.Status;
 import models.UserType;
 
@@ -94,7 +96,9 @@ public class LoginServlet extends HttpServlet{
         }else if(userTypeId == 3){
             Librarian librarian = new Librarian(email, password, new UserType(userTypeId));
             int result = librarian.login();
-            if(result == 0){}
+            if(result == 0){
+
+            }
             else if(result == 1){
                 request.setAttribute("email_error_message", MessageTemplate.getIncorrectEmailMessage());
             }else if(result == 2){
@@ -116,8 +120,27 @@ public class LoginServlet extends HttpServlet{
             }
             
         }else if(userTypeId == 1){
-            
+            Membership membership = new Membership(email,password, new UserType(userTypeId));
+            int result = membership.login();
 
+            if(result == 0){
+            }else if(result == 1){
+                request.setAttribute("email_error_message", MessageTemplate.getIncorrectEmailMessage());
+            }else if(result == 2){
+                request.setAttribute("password_error_message", MessageTemplate.getInvalidPasswordMessage());
+            }else if(result == 3){
+                int statusId = membership.getStatus().getStatusId();
+                if(statusId == Status.ACTIVE){
+                    session.setAttribute("user", membership);
+                    nextPage = "candidate_details.jsp";
+                }else if(statusId == Status.INACTIVE){
+                    String message = MessageTemplate.getIncompleteEmailVerificationMessage(email);
+                    nextPage = "message.jsp?img=static/media/images/IncompleteEmailVerification.png&color=text-green-200&message="+message;
+                }else if(statusId == Status.EMAIL_VERIFIED) {
+                    session.setAttribute("membership", membership);
+                    nextPage = "candidate_dashboard.jsp";
+                }
+            }
         }
         request.getRequestDispatcher(nextPage).forward(request, response);
     }
