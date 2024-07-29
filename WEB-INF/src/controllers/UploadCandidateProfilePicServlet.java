@@ -23,7 +23,7 @@ import models.Membership;
 public class UploadCandidateProfilePicServlet extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
         HttpSession session = request.getSession();
-        Membership membership = (Membership)session.getAttribute("membership");
+        Membership membership = (Membership)session.getAttribute("user");
 
         ServletContext context = getServletContext();
 

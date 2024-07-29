@@ -16,9 +16,11 @@ public class MembershipDetailsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
         HttpSession session = request.getSession();
 
-        Membership membership = (Membership)session.getAttribute("membership");
+        Membership membership = (Membership)session.getAttribute("user");
         
         Date dob = Date.valueOf(request.getParameter("dob"));
+        
+        System.out.println("---"+dob+"---");
 
         membership.setDob(dob);
 

@@ -132,16 +132,17 @@ public class LoginServlet extends HttpServlet{
                 int statusId = membership.getStatus().getStatusId();
                 if(statusId == Status.ACTIVE){
                     session.setAttribute("user", membership);
-                    nextPage = "candidate_details.jsp";
+                    nextPage = "candidate_dashboard.jsp";
                 }else if(statusId == Status.INACTIVE){
                     String message = MessageTemplate.getIncompleteEmailVerificationMessage(email);
                     nextPage = "message.jsp?img=static/media/images/IncompleteEmailVerification.png&color=text-green-200&message="+message;
                 }else if(statusId == Status.EMAIL_VERIFIED) {
                     session.setAttribute("membership", membership);
-                    nextPage = "candidate_dashboard.jsp";
+                    nextPage = "candidate_details.jsp";
                 }
             }
         }
+        System.out.println("=="+nextPage+"==");
         request.getRequestDispatcher(nextPage).forward(request, response);
     }
 }
