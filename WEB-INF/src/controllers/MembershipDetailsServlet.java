@@ -19,9 +19,7 @@ public class MembershipDetailsServlet extends HttpServlet {
         Membership membership = (Membership)session.getAttribute("user");
         
         Date dob = Date.valueOf(request.getParameter("dob"));
-        
-        System.out.println("---"+dob+"---");
-
+    
         membership.setDob(dob);
 
         membership.saveDobAndProfilePic();

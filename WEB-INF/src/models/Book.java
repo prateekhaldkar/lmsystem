@@ -48,6 +48,14 @@ public class Book {
     this.bookPic = bookPic;
   }
 
+  public Book(Integer bookId,String title,Category catedory, Publisher publisher, String bookPic){
+    this.bookId = bookId;
+    this.title = title;
+    this.category = catedory;
+    this.publisher = publisher;
+    this.bookPic = bookPic;
+  }
+
 
 
   ////// methods //////
@@ -76,6 +84,31 @@ public class Book {
     return list;
   }
 
+  public ArrayList<Book> searchBookByNameForLibrary(){
+
+    ArrayList<Book> list = new ArrayList<>();
+    
+    try {
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
+  
+      String query = "SELECT * FROM books WHERE title LIKE ?";
+
+      PreparedStatement ps = con.prepareStatement(query);
+      ps.setString(1,"%" + title + "%");
+      ResultSet rs = ps.executeQuery();
+
+      while(rs.next()){
+        list.add(new Book(rs.getInt(1),rs.getString(2),new Category(rs.getInt(3)),new Publisher(rs.getInt(4)),rs.getString(5)));
+      }
+      con.close();
+
+    } catch (SQLException | ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+
+    return list;
+  }
 
 
   public void saveBookPic() {

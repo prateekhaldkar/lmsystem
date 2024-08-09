@@ -47,7 +47,7 @@ public class BookPicServlet extends HttpServlet {
                                 case "book_id":
                                     book.setBookId(fileValue);
                                     break;
-                            }
+                            } 
                         }else{
                             String fileName = book.getBookId()+"."+fileItem.getName().split("\\.")[1];
 
@@ -77,31 +77,23 @@ public class BookPicServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
-        HttpSession session = request.getSession();
-        Book book = (Book)session.getAttribute("book");
-        Publisher publisher = (Publisher)session.getAttribute("user");
         
         String path = request.getParameter("path");
         ServletContext context = getServletContext();
-        if(publisher != null) {
+        
             
-            String absPath = context.getRealPath("/WEB-INF/uploads/publisher/"+publisher.getEmail()+"/bookPic");
-            
-            File file = new File(absPath);
-
             InputStream is = context.getResourceAsStream("/WEB-INF/uploads/publisher/"+path);
             
             OutputStream os = response.getOutputStream();
 
             byte[] arr = new byte[256];
-            int count = 0;
-            while((count=is.read(arr)) != -1) {
+
+            while((is.read(arr)) != -1) {
                 os.write(arr);
             }
 
             os.flush();
-            os.close();
-        }   
+            os.close();   
     }
 
 

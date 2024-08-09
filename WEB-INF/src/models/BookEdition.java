@@ -23,7 +23,10 @@ public class BookEdition  {
   //constructor
 
   public BookEdition(){
+  }
 
+  public BookEdition(Integer bookEditionId){
+    this.bookEditionId = bookEditionId;
   }
 
   public BookEdition(Book book) {
@@ -72,7 +75,7 @@ public class BookEdition  {
     return list;
   }
 
- 
+
 
   public void saveBookEdition(){
         try{

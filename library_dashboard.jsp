@@ -10,6 +10,7 @@
     <title>LMS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .active {
             display: block;
@@ -171,9 +172,16 @@
                     </button>
                 </li>
                 <li class="me-2" role="presentation">
-                    <button class="inline-flex items-center p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="t3-tab" data-tabs-target="#t3" type="button" role="tab" aria-controls="t3" aria-selected="false">
+                    <button class="inline-flex items-center p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="issue_book-tab" data-tabs-target="#issue_book" type="button" role="tab" aria-controls="issue_book" aria-selected="false">
                         <img src="static/media/images/find.png" class="w-6 mr-2" alt="find">
-                        t3
+                        Issue Book
+                    </button>
+                </li>
+                
+                <li class="me-2" role="presentation">
+                    <button class="inline-flex items-center p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="return_book-tab" data-tabs-target="#return_book" type="button" role="tab" aria-controls="return_book" aria-selected="false">
+                        <img src="static/media/images/find.png" class="w-6 mr-2" alt="find">
+                        Return Book
                     </button>
                 </li>
                 
@@ -196,29 +204,31 @@
             <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="candidate" role="tabpanel" aria-labelledby="candidate-tab">
                 candidate
             </div>
-            <!-- t3 -->
-            <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="t3" role="tabpanel" aria-labelledby="t3-tab">
-                t3
+            <!-- Issue Book -->
+            <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="issue_book" role="tabpanel" aria-labelledby="issue_book-tab">
+                Issue Book
+            </div>
+            <!-- Return Book -->
+            <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="return_book" role="tabpanel" aria-labelledby="return_book-tab">
+                Return Book
             </div>
 
             <!-- BOOKS -->
             <div class="hidden p-4 rounded-lg bg-indigo-900 dark:bg-indigo-900" id="books" role="tabpanel" aria-labelledby="books-tab">
                 
                 <!-- book_search_bar -->
-                <div class="max-w-md mx-auto">   
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="max-w-md mx-auto mt-5">
                     <div class="relative">
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                            </svg>
-                        </div>
                         <input type="search" id="book_search_input" class="block w-full p-4 ps-10 text-sm border border-white rounded-lg bg-transparent focus:ring-white focus:border-white dark:bg-transparent dark:border-white dark:placeholder-gray-400 dark:text-white dark:focus:ring-white dark:focus:border-white" placeholder="Search Mockups, Logos..." required />
-                        <button type="submit" id="book_search_button" class="text-white absolute end-2.5 bottom-2.5 bg-transparent hover:bg-transparent focus:ring-2 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-4 py-2 dark:bg-transparent dark:hover:bg-transparent dark:focus:ring-white">Search</button>
                     </div>
                 </div>
+                <!-- card -->
+                <div id="row_for_books" class="container mx-auto">
+                    
+                </div>
 
-
+                
+                
  
             </div>
             
@@ -227,6 +237,72 @@
 
     </div>
 
+    <!-- library search book by name -->
+    <script>
+        let book_search_input = document.querySelector('#book_search_input'); 
+        let row_for_books = document.querySelector('#row_for_books');
+    
+        book_search_input.addEventListener('keyup', () => {
+            row_for_books.innerHTML = '';
+            let req = new XMLHttpRequest();
+            let param = "title=" + book_search_input.value;
+            console.log(param);
+            req.open('GET', 'search_book_by_name_for_library.do?' + param, true);
+            req.addEventListener('readystatechange', () => {
+                if (req.readyState == 4 && req.status == 200) {
+                    console.log(req.responseText);
+                    let data = JSON.parse(req.responseText);
+                    console.log(data);
+    
+                    let row;
+                    for (let i = 0; i < data.length; i++) {
+                        if (i % 5 === 0) {
+                            row = document.createElement('div');
+                            row.className = 'flex flex-wrap -mx-4';
+                            row_for_books.append(row);
+                        }
+    
+                        let column = document.createElement('div');
+                        column.className = 'w-full md:w-1/5 px-4 mb-8';
+                        row.append(column);
+    
+                        let card = document.createElement('div');
+                        card.className = 'shadow-md rounded-md p-4';
+                        column.append(card);
+    
+                        let cardInner = document.createElement('div');
+                        cardInner.className = 'w-full max-w-xs bg-white border border-gray-900 rounded-lg shadow dark:bg-gray-900 dark:border-gray-900';
+                        card.append(cardInner);
+    
+                        let a = document.createElement('a');
+                        a.href = 'show_book_edition_for_library.do?book_id=' + data[i].bookId + "&title="+data[i].title;
+                        cardInner.append(a);
+    
+                        let img = document.createElement('img');
+                        img.src = 'book_pic.do?path=' + data[i].bookPic;
+                        img.className = 'card-img-top object-contain h-48 w-full';
+                        a.append(img);
+    
+                        let card_body = document.createElement('div');
+                        card_body.className = 'px-5 pb-5';
+                        cardInner.append(card_body);
+    
+                        let h3 = document.createElement('h3');
+                        h3.innerText = data[i].title;
+                        h3.className = 'text-xl font-semibold tracking-tight text-gray-900 dark:text-white';
+                        card_body.append(h3);
+    
+                        let category = document.createElement('p');
+                        category.innerText = data[i].category.name;
+                        category.className = 'text-lg font-medium tracking-tight text-gray-900 dark:text-white';
+                        card_body.append(category);
+                    }
+                }
+            });
+            req.send();
+        });
+    </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

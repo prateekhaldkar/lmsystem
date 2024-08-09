@@ -18,8 +18,8 @@ import javax.servlet.annotation.WebServlet;
 
 @WebServlet("/book_edition.do")
 public class BookEditionServlet extends HttpServlet {
+    
     public void doPost(HttpServletRequest request,HttpServletResponse response)throws IOException,ServletException{
-        
         String title = request.getParameter("title");
         
         Integer bookId = Integer.parseInt(request.getParameter("book_id"));

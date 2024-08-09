@@ -14,7 +14,12 @@ public class Library extends User {
   private Integer depositAmount;
 
   //constructor
-  public Library() {}
+  public Library() {
+  }
+
+  public Library(Integer libraryId) {
+    this.libraryId = libraryId;
+  }
 
   public Library(String email, String password, UserType userType) {
     super(email, password, userType);
@@ -80,11 +85,11 @@ public class Library extends User {
 
   //GET/SET
 
-  public Integer getLibratyId() {
+  public Integer getLibraryId() {
     return libraryId;
   }
 
-  public void setLibratyId(Integer libraryId) {
+  public void setLibraryId(Integer libraryId) {
     this.libraryId = libraryId;
   }
 

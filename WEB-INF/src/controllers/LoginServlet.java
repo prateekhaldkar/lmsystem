@@ -142,7 +142,6 @@ public class LoginServlet extends HttpServlet{
                 }
             }
         }
-        System.out.println("=="+nextPage+"==");
         request.getRequestDispatcher(nextPage).forward(request, response);
     }
 }

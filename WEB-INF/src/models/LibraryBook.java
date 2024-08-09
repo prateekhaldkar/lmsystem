@@ -1,6 +1,11 @@
 package models;
 
-// import models.BookEdition;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import models.BookEdition;
 
 public class LibraryBook {
 
@@ -14,6 +19,41 @@ public class LibraryBook {
 
   //constructor
   public LibraryBook() {}
+
+
+  public LibraryBook(BookEdition bookEdition, Integer copies, Library library) {
+    this.bookEdition = bookEdition;
+    this.copies = copies;
+    this.library = library;
+  }
+
+  // methods
+  public boolean addLibraryBooks(){
+    boolean flag = false;
+
+    try{
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdb?user=root&password=1234");
+
+      String query = "insert into library_books (library_id, book_edition_id, copies) values(?,?,?)";
+
+      PreparedStatement ps = con.prepareStatement(query);
+
+      ps.setInt(1, library.getLibraryId());
+      ps.setInt(2, bookEdition.getBookEditionId());
+      ps.setInt(3, copies);
+
+      int val = ps.executeUpdate();
+
+        if (val == 1)
+            flag = true;
+    }catch(SQLException | ClassNotFoundException e){
+      e.printStackTrace();
+    }
+
+
+    return flag;
+  }
 
   //GET/SET
   public Integer getLibraryBookId() {

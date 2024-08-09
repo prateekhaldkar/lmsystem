@@ -17,7 +17,7 @@ public class verifyEmailServlet extends HttpServlet {
         String email = request.getParameter("email");
         String verificationCode = request.getParameter("verification_code");
         Integer userTypeId = Integer.parseInt(request.getParameter("user_type_id"));
-    
+        
         boolean flag = User.verifyEmail(email, verificationCode, userTypeId);
     
         String nextPage = "login.jsp?user_type_id="+userTypeId;
