@@ -36,10 +36,14 @@
                             <input type="number" name="copies" id="copies" placeholder="" required class="block py-4 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-orngl dark:focus:border-orng focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
                             <label for="copies" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Enter Book Copies</label>
                         </div>
-                        <input type="hidden" id="book_edition_id" name="book_edition_id">
+                        <!-- <input type="hidden" id="book_edition_id" name="book_edition_id"> -->
+                        <input type="hidden" id="editinz" name="book_edition_id">
+                        
+                        <input type="hidden" name="book_id" id="book_id" value="${param.book_id}">
+                        <input type="hidden" name="title" id="title" value="${param.title}">
                     </form>    
                     <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button id="addnewbookinlibrarybtn" data-modal-hide="new-book-model" type="button" class="addbtn relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400">ADD BOOK</button>
+                        <button id="addnewbookinlibrarybtn" data-modal-hide="new-book-model" type="button" class=" relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400">ADD BOOK</button>
                     </div>
                 </div>
 
@@ -131,18 +135,22 @@
 
 <script>
     let addbtnclasses = document.querySelectorAll('.addbtn');
-    var bookEditionId = document.querySelector('#book_edition_id');
+    // var bookEditionId = document.querySelector('#book_edition_id');
+    const bookEditionId = document.querySelector('#editinz');
+    
+    const addnewbook = document.querySelector('#addnewbookinlibrarybtn');
+    const form = document.querySelector('#form');
 
-    addbtnclasses.forEach((addbtnclass)=>{
-        addbtnclass.addEventListener('click',(e)=>{
+    addbtnclasses.forEach((ele)=>{
+        ele.addEventListener('click',(e)=>{
             bookEditionId.value = e.target.id;
+            console.log(bookEditionId.value);
         });
     });
-
-    let addnewbook = document.querySelector('#addnewbookinlibrarybtn');
-    let form = document.querySelector('#form');
-
+    
+    
     addnewbook.addEventListener('click',()=>{
+        console.log(bookEditionId.value);
         form.submit();
     });
     
