@@ -1,0 +1,109 @@
+<script>
+    let debounce_search_title = function (func, delay) {
+        let timeout;
+        return function () {
+            if (timeout)
+                clearTimeout(timeout);
+            timeout = setTimeout(func, delay);
+        }
+    }
+
+    let available_book_search_input = document.querySelector('#available_book_search_input');
+    let row_for_available_book_in_library = document.querySelector('#row_for_available_book_in_library');
+
+    let libraryBookFunction = async () => {
+        row_for_available_book_in_library.innerHTML = '';
+        let param = 'title=' + available_book_search_input.value;
+        let response = await fetch('search_books_in_library.do?' + param);
+        let data = await response.json();
+        console.log(data);
+        for (let obj of data) {
+            let col_1 = document.createElement('div');
+            col_1.className = 'w-1/2'; // Replaces 'col-md-6'
+            row_for_available_book_in_library.append(col_1);
+
+            let card = document.createElement('div');
+            card.className = 'bg-white shadow rounded overflow-hidden'; // Replaces 'card'
+            col_1.append(card);
+
+            let col_1_row_1 = document.createElement('div');
+            col_1_row_1.className = 'flex'; // Replaces 'row'
+            card.append(col_1_row_1);
+
+            let col_1_row_1_col_1 = document.createElement('div');
+            col_1_row_1_col_1.className = 'w-1/2'; // Replaces 'col'
+            col_1_row_1.append(col_1_row_1_col_1);
+
+            let img = document.createElement('img');
+            img.className = 'shadow p-3 mb-2 bg-gray-100 rounded'; // Tailwind equivalent for image styling
+            img.src = "show_edition_img.do?path=" + obj.bookEdition.bookEditionPic;
+            img.style.width = "300px";
+            col_1_row_1_col_1.append(img);
+
+            let col_1_row_1_col_2 = document.createElement('div');
+            col_1_row_1_col_2.className = 'w-1/2'; // Replaces 'col-md'
+            col_1_row_1.append(col_1_row_1_col_2);
+
+            let card_body = document.createElement('div');
+            card_body.className = 'p-4'; // Replaces 'card-body'
+            col_1_row_1_col_2.append(card_body);
+
+            let card_body_row_1 = document.createElement('div');
+            card_body_row_1.className = 'text-xl mb-2'; // Replaces 'row fs-1'
+            card_body.append(card_body_row_1);
+            card_body_row_1.innerText = obj.bookEdition.book.title;
+
+            let card_body_row_2 = document.createElement('div');
+            card_body_row_2.className = 'flex'; // Replaces 'row'
+            card_body.append(card_body_row_2);
+
+            let card_body_row_2_col_1 = document.createElement('div');
+            card_body_row_2_col_1.className = 'w-1/2 text-lg'; // Replaces 'col-md fs-3'
+            card_body_row_2_col_1.innerText = 'Total:';
+            card_body_row_2.append(card_body_row_2_col_1);
+
+            let card_body_row_2_col_2 = document.createElement('div');
+            card_body_row_2_col_2.className = 'w-1/2 text-xl'; // Replaces 'col-md fs-2'
+            card_body_row_2_col_2.innerText = obj.copies;
+            card_body_row_2.append(card_body_row_2_col_2);
+
+            let card_body_row_3 = document.createElement('div');
+            card_body_row_3.className = 'flex'; // Replaces 'row'
+            card_body.append(card_body_row_3);
+
+            let card_body_row_3_col_1 = document.createElement('div');
+            card_body_row_3_col_1.className = 'w-1/2 text-lg'; // Replaces 'col-md fs-3'
+            card_body_row_3_col_1.innerText = 'Available:';
+            card_body_row_3.append(card_body_row_3_col_1);
+
+            let card_body_row_3_col_2 = document.createElement('div');
+            if ((obj.copies - obj.bookIssued) === 0) {
+                card_body_row_3_col_2.className = 'w-1/2 mt-2 text-red-500'; // Replaces 'col-md mt-2', added red text color
+                card_body_row_3_col_2.innerText = 'out of stock';
+            } else {
+                card_body_row_3_col_2.className = 'w-1/2 text-xl'; // Replaces 'col-md fs-2'
+                card_body_row_3_col_2.innerText = obj.copies - obj.bookIssued;
+            }
+            card_body_row_3.append(card_body_row_3_col_2);
+
+            let card_body_row_4 = document.createElement('div');
+            card_body_row_4.className = 'flex'; // Replaces 'row'
+            card_body.append(card_body_row_4);
+
+            let card_body_row_4_col_1 = document.createElement('div');
+            card_body_row_4_col_1.className = 'w-1/2 text-lg'; // Replaces 'col-md fs-3'
+            card_body_row_4_col_1.innerText = 'Edition:';
+            card_body_row_4.append(card_body_row_4_col_1);
+
+            let card_body_row_4_col_2 = document.createElement('div');
+            card_body_row_4_col_2.className = 'w-1/2 text-xl'; // Replaces 'col-md fs-2'
+            card_body_row_4_col_2.innerText = obj.bookEdition.edition;
+            card_body_row_4.append(card_body_row_4_col_2);
+        }
+    }
+
+    let optSearch = debounce_search_title(libraryBookFunction, 800);
+    available_book_search_input.addEventListener('keyup', () => {
+        optSearch();
+    });
+</script>

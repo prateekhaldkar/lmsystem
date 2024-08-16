@@ -84,7 +84,7 @@
                                         <img src="static/media/images/bookcover/b7.png" class="pt-6 card-img-top object-contain h-48 w-full">
                                     </c:when>
                                     <c:otherwise>
-                                        <img src="course_pic.do?course_id=${course.courseId}" class="card-img-top object-contain h-48 w-full">
+                                        <img src="book_edition.do?course_id=${course.courseId}" class="card-img-top object-contain h-48 w-full">
                                     </c:otherwise>
                                 </c:choose>
                                 <div class="px-5 pb-5">

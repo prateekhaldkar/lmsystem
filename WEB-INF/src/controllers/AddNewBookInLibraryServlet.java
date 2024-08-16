@@ -31,12 +31,6 @@ public class AddNewBookInLibraryServlet extends HttpServlet {
         Integer copies = Integer.parseInt(request.getParameter("copies"));
         Integer bookEditionId = Integer.parseInt(request.getParameter("book_edition_id"));
 
-        System.out.println("===="+bookId+"====");
-        System.out.println("===="+title+"====");
-        System.out.println("===="+copies+"====");
-        System.out.println("===="+bookEditionId+"====");
-
-
         LibraryBook librarybook = new LibraryBook(new BookEdition(bookEditionId),copies,new Library(library.getLibraryId()));
         
         librarybook.addLibraryBooks();

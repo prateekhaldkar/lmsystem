@@ -33,6 +33,13 @@ public class BookEdition  {
     this.book = book;
   }
 
+  public BookEdition(Integer bookEditionId, Book book, String bookEditionPic, Integer edition) {
+    this.bookEditionId = bookEditionId;
+    this.book = book;
+    this.bookEditionPic = bookEditionPic;
+    this.edition = edition;
+  }
+
   public BookEdition(Integer bookEditionId, Integer edition, Date publishedOn, Integer price, String details,Integer isbnNo, String bookEditionPic) {
     this.bookEditionId = bookEditionId;
     this.edition = edition;

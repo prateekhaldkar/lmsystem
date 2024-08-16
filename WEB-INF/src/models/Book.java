@@ -21,6 +21,10 @@ public class Book {
   //constructor
   public Book() {}
 
+  public Book(String title){
+    this.title = title;
+  }
+
   public Book(Integer bookId ){
     this.bookId = bookId; 
   }
@@ -54,6 +58,11 @@ public class Book {
     this.category = catedory;
     this.publisher = publisher;
     this.bookPic = bookPic;
+  }
+
+  public Book(String title,Integer bookId){
+    this.bookId = bookId;
+    this.title = title;
   }
 
 
