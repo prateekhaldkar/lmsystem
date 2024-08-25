@@ -251,8 +251,256 @@
 </body>
 </html>
 
-<!-- library search book by name, Available in library -->
+
+
+<!-- <script>
+    let debounce_search_title = function (func, delay) {
+        let timeout;
+        return function () {
+            if (timeout)
+                clearTimeout(timeout);
+            timeout = setTimeout(func, delay);
+        }
+    }
+    let available_book_search_input = document.querySelector('#available_book_search_input');
+    let row_for_available_book_in_library = document.querySelector('#row_for_available_book_in_library');
+
+    let libBookFunc = async () => {
+
+        let searchTerm = available_book_search_input.value.trim(); // Trim to remove spaces
+        if (searchTerm.length < 3) {
+            row_for_available_book_in_library.innerHTML = '';
+            return;
+        }
+
+
+        row_for_available_book_in_library.innerHTML = '';
+        let param = 'title=' + available_book_search_input.value;
+        let response = await fetch('search_book_by_name_available_in_library.do?' + param);
+        let data = await response.json();
+        console.log(data)
+        for(let obj of data){
+            let col_1 = document.createElement('div');
+            col_1.className = 'border border-gray-100';
+            row_for_available_book_in_library.append(col_1);
+
+            let card = document.createElement('div');
+            card.className = 'card border border-gray-200';
+            col_1.append(card);
+            
+            let col_1_row_1 = document.createElement('div');
+            col_1_row_1.className = 'row border border-gray-300';
+            card.append(col_1_row_1);
+
+            let col_1_row_1_col_1 = document.createElement('div');
+            col_1_row_1_col_1.className = 'col border border-gray-400';
+            col_1_row_1.append(col_1_row_1_col_1);
+
+            let img = document.createElement('img');
+            img.className = 'border border-gray-500 rounded';
+            img.src = "static/media/images/bookcover/b7.png";
+            img.style.width = "250px";
+            col_1_row_1_col_1.append(img);
+
+            let col_1_row_1_col_2 = document.createElement('div');
+            col_1_row_1_col_2.className = 'border border-gray-600';
+            col_1_row_1.append(col_1_row_1_col_2);
+
+
+
+            let card_body = document.createElement('div');
+            card_body.className = 'card-body border border-gray-700';
+            col_1_row_1_col_2.append(card_body);
+
+            let card_body_row_1 = document.createElement('div');
+            card_body_row_1.className = 'row border border-gray-800';
+            card_body.append(card_body_row_1);
+            card_body_row_1.innerText = obj.bookEdition.book.title;
+
+            let card_body_row_2 = document.createElement('div');
+            card_body_row_2.className = 'row border border-gray-900';
+            card_body.append(card_body_row_2);
+            
+            let card_body_row_2_col_1 = document.createElement('div');
+            card_body_row_2_col_1.className = 'col-md border border-gray-950';
+            card_body_row_2_col_1.innerText = 'Total:';
+            card_body_row_2.append(card_body_row_2_col_1);
+            
+            let card_body_row_2_col_2 = document.createElement('div');
+            card_body_row_2_col_2.className = 'col-md border border-gray-900';
+            card_body_row_2_col_2.innerText = obj.copies;
+            card_body_row_2.append(card_body_row_2_col_2);
+
+            
+            let card_body_row_3 = document.createElement('div');
+            card_body_row_3.className = 'row border-gray-800';
+            card_body.append(card_body_row_3);
+            
+            let card_body_row_3_col_1 = document.createElement('div');
+            card_body_row_3_col_1.className = 'col-md border border-gray-700';
+            card_body_row_3_col_1.innerText = 'Available:';
+            card_body_row_3.append(card_body_row_3_col_1);
+            
+            let card_body_row_3_col_2 = document.createElement('div');
+            if((obj.copies - obj.bookIssued) === 0){
+                card_body_row_3_col_2.className = 'col-md border border-gray-600';
+                card_body_row_3_col_2.innerText = 'out of stock' ;
+                card_body_row_3_col_2.style.color = 'red';
+            }else{
+                card_body_row_3_col_2.className = 'col-md border border-gray-500';
+                card_body_row_3_col_2.innerText = obj.copies - obj.bookIssued ;
+            }
+            card_body_row_3.append(card_body_row_3_col_2);
+
+
+
+            let card_body_row_4 = document.createElement('div');
+            card_body_row_4.className = 'row border border-gray-400';
+            card_body.append(card_body_row_4);
+            
+            let card_body_row_4_col_1 = document.createElement('div');
+            card_body_row_4_col_1.className = 'col-md border border-gray-300';
+            card_body_row_4_col_1.innerText = 'Edition:';
+            card_body_row_4.append(card_body_row_4_col_1);
+            
+            let card_body_row_4_col_2 = document.createElement('div');
+            card_body_row_4_col_2.className = 'col-md border border-gray-200';
+            card_body_row_4_col_2.innerText = obj.bookEdition.edition ;
+            card_body_row_4.append(card_body_row_4_col_2);
+            
+
+
+
+
+        }
+    }
+
+    let optSearch = debounce_search_title(libBookFunc, 800);
+    available_book_search_input.addEventListener('keyup', () => {
+        optSearch();
+    });
+</script> -->
+
+<!-- design sahi but data nai dikh raha hai  -->
 <script>
+    let debounce_search_title = function (func, delay) {
+        let timeout;
+        return function () {
+            if (timeout)
+                clearTimeout(timeout);
+            timeout = setTimeout(func, delay);
+        }
+    }
+    let available_book_search_input = document.querySelector('#available_book_search_input');
+    let row_for_available_book_in_library = document.querySelector('#row_for_available_book_in_library');
+
+    let libBookFunc = async () => {
+    let searchTerm = available_book_search_input.value.trim(); // Trim to remove spaces
+    if (searchTerm.length < 3) {
+        row_for_available_book_in_library.innerHTML = '';
+        return;
+    }
+    row_for_available_book_in_library.innerHTML = '';
+    let param = 'title=' + encodeURIComponent(searchTerm);
+    let response = await fetch('search_book_by_name_available_in_library.do?' + param);
+    let data = await response.json();
+    console.log(data);
+
+    data.forEach((obj, index) => {
+        if (index % 5 === 0) {
+            let flexWrapDiv = document.createElement('div');
+            flexWrapDiv.className = 'flex flex-wrap -mx-4';
+            row_for_available_book_in_library.append(flexWrapDiv);
+        }
+
+        let colDiv = document.createElement('div');
+        colDiv.className = 'w-1/5 px-4 mb-8';
+        row_for_available_book_in_library.lastChild.append(colDiv);
+
+        let cardDiv = document.createElement('div');
+        cardDiv.className = 'shadow-md rounded-md p-4';
+        colDiv.append(cardDiv);
+
+        let anchor = document.createElement('a');
+        anchor.href = '#';
+        cardDiv.append(anchor);
+
+        let bookDiv = document.createElement('div');
+        bookDiv.className = 'w-full max-w-xs bg-white border border-gray-900 rounded-lg shadow dark:bg-gray-900 dark:border-gray-900';
+        bookDiv.id = obj.bookEdition.bookEditionId;
+        anchor.append(bookDiv);
+
+        let img = document.createElement('img');
+        img.className = 'pt-6 card-img-top object-contain h-48 w-full';
+        img.src = obj.bookEdition.bookPic ? `book_edition.do?course_id=${obj.bookEdition.courseId}` : 'static/media/images/bookcover/b7.png';
+        bookDiv.append(img);
+
+        let contentDiv = document.createElement('div');
+        contentDiv.className = 'px-5 pb-5';
+        bookDiv.append(contentDiv);
+
+        let title = document.createElement('h1');
+        title.className = 'text-xl font-semibold tracking-tight text-gray-900 dark:text-white';
+        title.innerText = `Edition - ${obj.bookEdition.edition}`;
+        contentDiv.append(title);
+
+        let price = document.createElement('h6');
+        price.className = 'text-xl font-semibold tracking-tight text-gray-900 dark:text-white';
+        price.innerHTML = `&#8377; ${obj.bookEdition.price}`;
+        contentDiv.append(price);
+
+        let publishedOn = document.createElement('h6');
+        publishedOn.className = 'tracking-tight text-gray-900 dark:text-white';
+        publishedOn.innerText = `Published on: ${obj.bookEdition.publishedOn}`;
+        contentDiv.append(publishedOn);
+
+        // Star rating div
+        let ratingDiv = document.createElement('div');
+        ratingDiv.className = 'flex items-center mt-2.5 mb-5';
+        contentDiv.append(ratingDiv);
+
+        let starsDiv = document.createElement('div');
+        starsDiv.className = 'flex items-center space-x-1 rtl:space-x-reverse';
+        ratingDiv.append(starsDiv);
+
+        for (let i = 0; i < 5; i++) {
+            let star = document.createElement('svg');
+            star.className = `w-4 h-4 ${i < 4 ? 'text-yellow-300' : 'text-gray-200 dark:text-gray-600'}`;
+            star.setAttribute('aria-hidden', 'true');
+            star.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            star.setAttribute('fill', 'currentColor');
+            star.setAttribute('viewBox', '0 0 22 20');
+            star.innerHTML = '<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>';
+            starsDiv.append(star);
+        }
+
+        let ratingText = document.createElement('span');
+        ratingText.className = 'bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3';
+        ratingText.innerText = '5.0';
+        ratingDiv.append(ratingText);
+
+        let buttonDiv = document.createElement('div');
+        buttonDiv.className = 'px-5 pb-5 flex justify-center';
+        contentDiv.append(buttonDiv);
+
+        let button = document.createElement('button');
+        button.id = obj.bookEdition.bookEditionId;
+        button.setAttribute('data-modal-target', 'new-book-model');
+        button.setAttribute('data-modal-toggle', 'new-book-model');
+        button.type = 'button';
+        button.className = 'addbtn relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400';
+        button.innerText = 'ADD TO LIBRARY';
+        buttonDiv.append(button);
+    });
+}
+
+// Event listener for keyup
+available_book_search_input.addEventListener('keyup', debounce_search_title(libBookFunc, 400));
+
+</script>
+
+<!-- library search book by name, Available in library -->
+<!-- <script>
     let debounce_search_title = function (func, delay) {
         let timeout;
         return function () {
@@ -267,7 +515,6 @@
     let libBookFunc = async () => {
         let searchTerm = available_book_search_input.value.trim(); // Trim to remove spaces
         if (searchTerm.length < 3) {
-            // Agar input 3 se kam hai ya khali hai, toh result area clear kar do.
             row_for_available_book_in_library.innerHTML = '';
             return;
         }
@@ -375,7 +622,7 @@
     available_book_search_input.addEventListener('keyup', () => {
         optSearch();
     });
-</script>
+</script> -->
 
 
 
@@ -458,3 +705,10 @@
     // Event listener to close the modal when the close button is clicked
     document.getElementById('viewprofileclose-modal').addEventListener('click', closeModal);
 </script>
+
+create table book_edition_pic(
+    book_edition_pic_id int not null auto_increment primary key,
+    book_edition_id int not null,
+    edition_img_path varchar(256) not null,
+    constraint fk_edition_pic foreign key (book_edition_id) references book_editions(book_edition_id)
+);

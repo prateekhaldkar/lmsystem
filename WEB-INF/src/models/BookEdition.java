@@ -132,7 +132,7 @@ public class BookEdition  {
       }
 
     }
-
+ 
 
   //GET/SET
   public Integer getBookEditionId() {
